@@ -1,0 +1,3 @@
+1. 
+4. display of score, points on hit, powers left
+6. Integrate all the stages together.

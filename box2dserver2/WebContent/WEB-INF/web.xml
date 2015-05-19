@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app id="box2dserver2">
+
+	<servlet>
+		<servlet-name>StoreStageServelet</servlet-name>
+		<servlet-class>com.StoreStageServelet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StoreStageServelet</servlet-name>
+		<url-pattern>/store</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>RetrieveData</servlet-name>
+		<servlet-class>com.RetrieveData</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RetrieveData</servlet-name>
+		<url-pattern>/retrieve</url-pattern>
+	</servlet-mapping>
+		
+	<servlet>
+		<servlet-name>StoreLevel</servlet-name>
+		<servlet-class>com.StoreLevel</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StoreLevel</servlet-name>
+		<url-pattern>/level</url-pattern>
+	</servlet-mapping>
+
+</web-app>

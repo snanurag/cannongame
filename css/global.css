@@ -1,0 +1,45 @@
+.demo {
+    height: 34em;
+    width: 100%;
+    border: 0.3em solid #282923;
+}
+
+	.firstscreen {
+		opacity : 0.5;
+		pointer-events: auto;
+	}
+
+	.firstscreen.easeout {
+		opacity:0;
+		pointer-events: none;
+	}
+	
+	.googlesignin {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: rgba(0, 0, 0, 0.8);
+		z-index: 99999;
+		-webkit-transition: opacity 1s ease-in;
+		-moz-transition: opacity 1s ease-in;
+		transition: opacity 1s ease-in;
+		pointer-events: none;
+	}
+
+	.googlesignin.easein {
+		opacity:1;
+		pointer-events: auto;
+	}
+
+	.googlesignin.easeout {
+		opacity:0;
+		pointer-events: none;
+	}
+	
+	.googlesignin > div {
+		position: relative;
+		top : 200px;
+		margin : auto;
+	}

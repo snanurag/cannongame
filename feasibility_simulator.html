@@ -1,0 +1,399 @@
+<html>
+<head>
+
+<!--
+	<script type="text/javascript" src="http://lib.ivank.net/ivank.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+-->		
+	<script src="js/ivank.js"></script>
+	<link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css" />
+    <script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/jquery.mobile-1.3.2.min.js"></script>
+    <script type="text/javascript" src="feasibility_simulator_create.js"></script>
+	<script src="feasibility_simulator_util.js"></script>
+	
+	<script type="text/javascript" src="Box2dWeb-2.1.a.3.min.js"></script>
+	<script type="text/javascript" src="cache.js"></script>
+	<script type="text/javascript" src="anims/anim_smoke.js"></script>
+	<script type="text/javascript" src="anims/anim_building1.js"></script>
+	<script type="text/javascript" src="anims/anim_building2.js"></script>
+	<script type="text/javascript" src="anims/anim_building3.js"></script>
+	
+	<script type="text/javascript">
+	
+//		var world;
+//		var stage;
+//		var bodies = [];	// instances of b2Body (from Box2D)
+//		var actors = [];	// instances of Bitmap (from IvanK)
+//		var cannons = [];
+//		var balls = [];
+
+//		var cache = new Cache(); //Use cache.setItem to set any key-value in global map.
+		var SCALE = 100;
+		var devScreenWidth = 1366;
+		var devScreenHeight = 643;
+		var scaleX;
+		var scaleY;
+		var MIN_VEL_BALL = 1.2;
+		var FRAME_RATE_MILLI_SEC = 100;
+		var total_bodies = 0;
+		var total_towers = 2;
+		
+		// Defined basic building components
+		var b2Vec2	 = Box2D.Common.Math.b2Vec2;
+		var b2BodyDef	 = Box2D.Dynamics.b2BodyDef;
+		var b2Body	 = Box2D.Dynamics.b2Body;
+		var b2FixtureDef = Box2D.Dynamics.b2FixtureDef;
+		var b2World	 = Box2D.Dynamics.b2World;
+		var b2PolygonShape = Box2D.Collision.Shapes.b2PolygonShape;
+		var b2CircleShape	= Box2D.Collision.Shapes.b2CircleShape;
+		var b2MassData = Box2D.Collision.Shapes.b2MassData;
+		var b2Transform = Box2D.Common.Math.b2Transform;
+		var b2Listener = Box2D.Dynamics.b2ContactListener;
+
+		var clickcords = [];
+		
+		function runSimulation()
+		{
+
+			console.log(Date.now());
+			$.get( "http://localhost:8080/box2dserver2/retrieve", function( data ) 
+			{
+			
+//			136*91=12376
+//			103*110=11330
+//			192*136=24685			
+//				for(var i=1; i<136; i++)
+//				for(var i=1; i<103; i++)
+				for(var i=1; i<138; i++)
+				{
+//					for(var j=1; j<91; j++)
+//					for(var j=1; j<110; j++)
+					for(var j=1; j<96; j++)
+					{
+//						Start(i*10, j*7, JSON.parse(data));
+						Start(i*14, j*10, JSON.parse(data));
+						}
+				}
+		
+			});
+
+//			136*91=12376
+//			103*110=11330
+//			setTimeout(runSimulation, 450000);
+
+//			192*129=24685			
+//			setTimeout(runSimulation, 900000);
+
+//			Start(350, 168);
+			
+		}
+		
+		function Start(x, y, data)
+        {
+
+			var world = new b2World(new b2Vec2(0, 10),  true);
+			var stage = new Object();
+			stage.stageWidth = 1920;
+			stage.stageHeight = 954;
+//			stage.stageWidth = 1366;
+//			stage.stageHeight = 643;
+//			stage.stageWidth = 1024;
+//			stage.stageHeight = 768;
+			var bodies = [];
+			var cannons = [];
+			var balls = [];
+			
+			var interval = setInterval(onEF, 20, world, cannons) 
+
+		
+//			stage.addEventListener(Event.ENTER_FRAME, onEF);
+//			stage.addEventListener(Event.ENTER_FRAME, recoil);
+//			stage.addEventListener(MouseEvent.CLICK, Jump);
+//			stage.addEventListener(MouseEvent.MOUSE_MOVE, cannonfocus);
+
+			// background //TODO have to change this scaling
+	//		var bg = new Bitmap( new BitmapData("images.jpg") );
+	//		bg.scaleX = stage.stageWidth/1024;
+	//		bg.scaleY = stage.stageHeight/512;
+	//		stage.addChild(bg);
+			
+			//Scaling factor for other screens than Development screen.
+			scaleX = stage.stageWidth/devScreenWidth;
+			scaleY = stage.stageHeight/devScreenHeight;
+			
+
+			var listener = new b2Listener();
+			world.SetContactListener(listener);
+			listener.BeginContact = collapseBuilding;
+			
+			// I decided that 1 meter = 100 pixels
+
+			var bxFixDef	= new b2FixtureDef();	// box  fixture definition
+			bxFixDef.shape	= new b2PolygonShape();
+			var blFixDef	= new b2FixtureDef();	// ball fixture definition
+			blFixDef.shape	= new b2CircleShape();
+			bxFixDef.density	= blFixDef.density = 1;
+			blFixDef.friction = 1;
+			blFixDef.restitution = 0.3;
+
+			var bodyDef = new b2BodyDef();
+			bodyDef.type = b2Body.b2_staticBody;
+
+            // create ground
+            bxFixDef.shape.SetAsBox(10, 1);
+            bodyDef.position.Set(stage.stageWidth/(SCALE*2), stage.stageHeight/SCALE + 1);
+            world.CreateBody(bodyDef).CreateFixture(bxFixDef);
+
+			//create roof 
+            bxFixDef.shape.SetAsBox(10, 1);
+            bodyDef.position.Set(stage.stageWidth/(SCALE*2), -1);
+            world.CreateBody(bodyDef).CreateFixture(bxFixDef);
+
+			bxFixDef.shape.SetAsBox(1, 100);
+
+			// left wall
+			bodyDef.position.Set(-1, 3);
+			world.CreateBody(bodyDef).CreateFixture(bxFixDef);
+
+			// right wall
+			bodyDef.position.Set(stage.stageWidth/SCALE + 1, 3);
+			world.CreateBody(bodyDef).CreateFixture(bxFixDef);
+
+			simulateJumpEvent(stage, world, bodies, cannons, balls, x ,y, data);	
+
+//			192*136=24685			
+			setTimeout(function(){clearInterval(interval)}, 350000);
+			setTimeout(destroyBodies, 400000, world, bodies, x, y);
+
+//			136*91=12376
+//			103*110=11330
+//			setTimeout(function(){clearInterval(interval)}, 320000);
+//			setTimeout(destroyBodies, 340000, world, bodies, x, y);
+			
+		}
+
+		function onEF(world, cannons)
+		{
+	
+			world.Step(1 / 60,  10,  3);
+			world.ClearForces();
+			world.Step(1 / 60,  10,  3);
+			world.ClearForces();
+			world.Step(1 / 60,  10,  3);
+			world.ClearForces();
+			
+//			for(var i=0; i<actors.length; i++)
+//			{
+//				var body  = bodies[i];
+//				var actor = actors [i];
+//				var p = body.GetPosition();
+//				actor.x = (p.x) *SCALE;	// updating actor
+//				actor.y = (p.y ) *SCALE;
+//				actor.rotation = body.GetAngle()*180/Math.PI;
+//			}
+			recoil(cannons);
+		}
+
+		function Jump(e, stage, world, bodies, cannons, balls)
+		{
+			//TODO set a condition here to put the later code in action only if whole stage is stationary
+
+			cannonfocus(e, cannons);
+			//On click on Screen, cannon balls would be added to screen.
+			addCannonBallToStage(stage, world, bodies, cannons, balls, e.currentTarget.mouseX, e.currentTarget.mouseY);
+			
+			//This for loop will give impulse to cannons and will set the linear velocity.
+			for(var i=0; i<cannons.length; i++)
+			{
+				var body = cannons[i];
+				var position = body.GetPosition();
+
+				var impulse = getImpulse(e, body, 30);
+				impulse = new b2Vec2(-impulse.x, -impulse.y);
+				body.SetLinearVelocity(impulse);
+				//This flag put the cannons at very low CPU usage. But it increased the response behavior of cannons.
+				body.SetAwake(true);
+			}
+			
+			//This for loop will give impulse to balls 
+			for(var i=0; i<balls.length; i++)
+			{
+				var impulse = getImpulse(e, balls[i]);
+				balls[i].ApplyImpulse(impulse, balls[i].GetWorldCenter());
+			}
+       	}
+
+		function recoil(cannons)
+		{
+			if(cannons.length > 0)
+			{
+				for(var i=0; i<cannons.length; i++)
+				{
+					var body = cannons[i];
+					var position = body.GetPosition();
+					var bodyX = position.x;
+					var bodyY = position.y;
+
+					var fixDef = body.GetFixtureList();
+					var userData = fixDef.GetUserData();
+
+					var X = userData.originalX;
+					var Y = userData.originalY;
+	
+					var distance = Math.sqrt((bodyX-X)*(bodyX-X)+(bodyY-Y)*(bodyY-Y))
+					var vel = body.GetLinearVelocity();
+
+					if(distance > 0.1 && userData.cannonRecoilReverse == false)
+					{
+						vel.x = -(vel.x)/35;
+						vel.y = -(vel.y)/35;
+						userData.cannonRecoilReverse = true;
+					}
+					if(userData.cannonRecoilReverse == true && distance < 0.02)
+					{
+						vel.x = 0;
+						vel.y = 0;
+						body.SetPosition(new b2Vec2(X, Y));
+						userData.cannonRecoilReverse = false;
+					}
+				}
+			}
+		}
+
+       	function cannonfocus(e, cannons)
+       	{
+			var currentTarget = e.currentTarget;
+			var cursorX = currentTarget.mouseX/SCALE;
+			var cursorY = currentTarget.mouseY/SCALE;
+
+			for(var i=0; i<cannons.length; i++)
+			{
+				var body = cannons[i];
+				var position = body.GetPosition();
+				var bodyX = position.x;
+				var bodyY = position.y;
+
+				var dirX = -bodyX+cursorX;
+				var dirY = -bodyY+cursorY;
+
+				var angle = Math.atan(dirY/dirX);
+				
+				if(dirX < 0)
+				{
+					angle = Math.PI + angle;
+				}
+				
+				body.SetAngle(angle);
+			}
+       	}
+		
+		function collapseBuilding(contact)
+		{
+			var userDataA = contact.GetFixtureA().GetUserData();
+			var userDataB = contact.GetFixtureB().GetUserData();
+			
+			if(userDataA != undefined || userDataA != null)
+			{
+				var nameA = userDataA.name;
+				if(userDataB != null && userDataB.name == "cannon ball")
+				{
+					if(getMagnitude(userDataB.body.GetLinearVelocity()) > MIN_VEL_BALL)
+					{
+						if(nameA == "building1")
+						{
+							if(userDataA.bodies.indexOf(userDataA.body) > -1)
+							{
+								userDataA.bodies.splice(userDataA.bodies.indexOf(userDataA.body), 1);
+								setTimeout(function(){userDataA.body.GetWorld().DestroyBody(userDataA.body);},50);
+							}
+						//TODO put trigger here
+//							animBuilding1(userDataA.originalX, userDataA.originalY, 0, initializeBuilding1(), userDataA.actor, userDataA.body);
+						}
+						else if(nameA == "building2")
+						{
+						alert('A b2');
+						//TODO put trigger here
+//							animBuilding2(userDataA.originalX, userDataA.originalY, 0, initializeBuilding2(), userDataA.actor, userDataA.body);
+						}
+						else if(nameA == "building3")
+						{
+						alert('A b3');
+						//TODO put trigger here
+//							animBuilding3(userDataA.originalX, userDataA.originalY, 0, initializeBuilding3(), userDataA.actor, userDataA.body);
+						}
+					}
+				}
+			}
+			if(userDataB != undefined || userDataB != null)
+			{
+				var nameB = userDataB.name;
+				if(userDataA != null && userDataA.name == "cannon ball")
+				{
+					if(getMagnitude(userDataA.body.GetLinearVelocity()) > MIN_VEL_BALL)
+					{	
+						if(nameB == "building1")
+						{ 
+							if(userDataB.bodies.indexOf(userDataB.body) > -1)
+							{
+								userDataB.bodies.splice(userDataB.bodies.indexOf(userDataB.body), 1);
+								setTimeout(function(){userDataB.body.GetWorld().DestroyBody(userDataB.body);},50);
+
+							}
+						//TODO put trigger here
+//							animBuilding1(userDataB.originalX, userDataB.originalY, 0, initializeBuilding1(), userDataB.actor, userDataB.body);
+						}
+						else if(nameB == "building2")
+						{
+						alert('B b2');
+						//TODO put trigger here
+//							animBuilding2(userDataB.originalX, userDataB.originalY, 0, initializeBuilding2(), userDataB.actor, userDataB.body);
+						}
+						else if(nameB == "building3")
+						{
+						alert('B b3');
+						//TODO put trigger here
+//						animBuilding3(userDataB.originalX, userDataB.originalY, 0, initializeBuilding3(), userDataB.actor, userDataB.body);
+						}
+					}
+				}
+			}			
+		}
+		
+		function destroyBodies(world, bodies, x, y)
+		{
+			if(bodies.length == total_bodies - total_towers)
+			{
+				console.log(x+' '+y);
+				clickcords.push(x+' '+y);
+			}
+//			if(x == 1350 && y == 630)
+//			if(x == 1020 && y == 763)
+			console.log('x = '+x+' y = '+y);
+			if(x == 1918 && y == 950)
+			{
+				$.post('http://localhost:8080/box2dserver2/level', clickcords.length.toString()+'&'+JSON.stringify(clickcords));
+				console.log('simulation is complete');
+				console.log(JSON.stringify(clickcords));
+				console.log(Date.now());
+				
+				//Emptying clickcords array.
+				clickcords = [];
+
+			}
+			var bodyList = world.GetBodyList();
+			var body = bodyList.GetNext();
+			while(body)
+			{
+				world.DestroyBody(body);
+				body = bodyList.GetNext();
+			}
+		}
+     </script>
+</head>
+<body onload="runSimulation();"><canvas id="c" width="960" height="400"></canvas>
+<canvas id="d" width="960" height="400"></canvas>
+</body>
+</html>

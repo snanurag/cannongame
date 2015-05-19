@@ -1,0 +1,209 @@
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<script src="../js/jquery-1.9.1.min.js"></script>
+	<script src="../js/ivank.js"></script>
+	<script src="anims/anim_bomb.js"></script>
+	<script src="anim_utils.js"></script>
+	
+<!--	<script src="../js/jquery.mobile-1.3.2.min.js"></script> -->
+	<script type="text/javascript">
+		var stage, cur = null;
+//		alert(Math.floor(window.innerWidth));
+		var w = window.innerWidth;
+		var h = window.innerHeight;
+		var imageW = 50;
+		var imageH = 50;
+		
+		function Start()
+		{
+			stage = new Stage("c");
+
+			var bg = new Bitmap( new BitmapData("images/bck_fp.png") );
+			stage.addChild(bg);
+
+			setStageIcon9('stage_icons/9.png', w/8, h/4);
+			setStageIcon10('stage_icons/10.png', 3*w/8, h/4);
+			setStageIcon11('stage_icons/11.png', 5*w/8, h/4);
+			setStageIcon12('stage_icons/12.png', 7*w/8, h/4);
+			setStageIcon13('stage_icons/13.png', w/8, 3*h/4);
+			setStageIcon14('stage_icons/14.png', 3*w/8, 3*h/4);
+			setStageIcon15('stage_icons/15.png', 5*w/8, 3*h/4);
+			setStageIcon16('stage_icons/16.png', 7*w/8, 3*h/4);
+
+			initializeBombAnim();
+			startBombBurningDeamon(stage, 9);
+		}
+
+//		function onMOv(e){ e.target.alpha = 1.0; }
+//		function onMOu(e){ e.target.alpha = 0.7; }
+//		function onMU (e){ cur = null; }
+
+		function setStageIcon(image, x, y)
+		{
+		
+			//Adding bomb in background
+			var imageBomb = new Bitmap(new BitmapData('stage_icons/bomb/bomb1.png'));
+			imageBomb.x =  Math.floor(x - imageW);
+			imageBomb.y =  Math.floor(y - imageH);
+			stage.addChild(imageBomb);
+			
+			var bd = new BitmapData(image);
+
+			var b = new Bitmap(bd);
+			b.x = Math.floor(x - imageW);
+			b.y = Math.floor(y - imageH);
+			b.buttonMode = true;
+//			b.alpha = 0.7;
+			stage.addChild(b);
+				
+//			b.addEventListener(MouseEvent.MOUSE_OVER, onMOv);
+//			b.addEventListener(MouseEvent.MOUSE_OUT , onMOu);
+//			b.addEventListener(MouseEvent.MOUSE_UP  , onMU );
+			
+			//Returning Bitmap type.
+			return b;
+		}
+
+		function onMD ()
+		{ 
+		
+			//TODO Have to enable it later and has to verify whether it will work in mozilla and opera too or not?
+/*			if(window.parent.outerHeight != window.parent.screen.availHeight || window.parent.outerWidth != window.parent.screen.availWidth)
+			{
+				alert('Please maximise browser to full size before begining the game.');
+				return;
+			}
+*/	
+			// Creating IFrame in parent document.
+			var ifrm = window.parent.document.createElement("IFRAME");
+			
+			//Resizing Iframe of parent document.
+			ifrm.style.width = window.parent.innerWidth +'px';
+			ifrm.style.height = window.parent.innerHeight +'px'; 
+		//	window.parent.document.body.style['overflow-y'] = 'hidden'
+			window.parent.document.body.style['margin-top'] = 'auto';
+			window.parent.document.body.style['margin-bottom'] = 'auto';
+			
+			
+			//Adding frame to the body.
+			window.parent.document.body.appendChild(ifrm);
+
+			// Removing contents of parent document.	
+			$('div', window.parent.document).remove();
+			
+			return ifrm;
+		}
+		
+		function setStageIcon9(image, x, y)
+		{
+			//Bitmap of stage icon
+			var b = setStageIcon(image, x, y);
+			b.addEventListener(MouseEvent.MOUSE_DOWN, onMD9 );
+		}
+
+		function onMD9(e)
+		{
+			var ifrm = onMD();
+			ifrm.setAttribute("src", '../cannongame.html?level=6258359.91985284.json&attempts=0');
+		}
+
+		function setStageIcon10(image, x, y)
+		{
+			//Bitmap of stage icon
+			var b = setStageIcon(image, x, y);
+			b.addEventListener(MouseEvent.MOUSE_DOWN, onMD10 );
+		}
+
+		function onMD10(e)
+		{
+			var ifrm = onMD();
+			ifrm.setAttribute("src", '../cannongame.html?level=3.1290327045556176E8.json&attempts=0');
+		}
+
+		function setStageIcon11(image, x, y)
+		{
+			//Bitmap of stage icon
+			var b = setStageIcon(image, x, y);
+			b.addEventListener(MouseEvent.MOUSE_DOWN, onMD11 );
+		}
+
+		function onMD11(e)
+		{
+			var ifrm = onMD();
+			ifrm.setAttribute("src", '../cannongame.html?level=8.11031994827002E8.json&attempts=0');
+		}
+
+		function setStageIcon12(image, x, y)
+		{
+			//Bitmap of stage icon
+			var b = setStageIcon(image, x, y);
+			b.addEventListener(MouseEvent.MOUSE_DOWN, onMD12 );
+		}
+
+		function onMD12(e)
+		{
+			var ifrm = onMD();
+			ifrm.setAttribute("src", '../cannongame.html?level=8.338782965651317E8.json&attempts=0');
+		}
+		
+		function setStageIcon13(image, x, y)
+		{
+			//Bitmap of stage icon
+			var b = setStageIcon(image, x, y);
+			b.addEventListener(MouseEvent.MOUSE_DOWN, onMD13 );
+		}
+
+		function onMD13(e)
+		{
+			var ifrm = onMD();
+			ifrm.setAttribute("src", '../cannongame.html?level=7.19074501173349E7.json&attempts=0');
+		}
+		
+		function setStageIcon14(image, x, y)
+		{
+			//Bitmap of stage icon
+			var b = setStageIcon(image, x, y);
+			b.addEventListener(MouseEvent.MOUSE_DOWN, onMD14 );
+		}
+
+		function onMD14(e)
+		{
+			var ifrm = onMD();
+			ifrm.setAttribute("src", '../cannongame.html?level=7.329634825159239E8.json&attempts=0');
+		}
+		
+		function setStageIcon15(image, x, y)
+		{
+			//Bitmap of stage icon
+			var b = setStageIcon(image, x, y);
+			b.addEventListener(MouseEvent.MOUSE_DOWN, onMD15 );
+		}
+
+		function onMD15(e)
+		{
+			var ifrm = onMD();
+			ifrm.setAttribute("src", '../cannongame.html?level=6.167622551590418E8.json&attempts=0');
+		}
+		
+		function setStageIcon16(image, x, y)
+		{
+			//Bitmap of stage icon
+			var b = setStageIcon(image, x, y);
+			b.addEventListener(MouseEvent.MOUSE_DOWN, onMD16 );
+		}
+
+		function onMD16(e)
+		{
+			var ifrm = onMD();
+			ifrm.setAttribute("src", '../cannongame.html?level=2.7911617107737976E8.json&attempts=0');
+		}
+
+	</script>
+</head>
+<body onload="Start();" style="overflow-y: hidden;">
+<canvas id="c" width="500" height="300"></canvas>
+</body>
+</html>

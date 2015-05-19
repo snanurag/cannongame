@@ -1,0 +1,63 @@
+{"imagelist":[
+        {
+            "x":5,
+            "y": 5,
+            "width" : 0.3,
+            "heigth" : 0.3,
+            "bitmapWidth": -100,
+            "bitmapHeight":-100,
+            "image":"img/box.png",
+            "shape": "polygon",
+            "type": "static",
+            "name":"blocker",
+            "description": "Blocker 1",
+			"friction" : 1,
+			"restitution" : 0
+			
+        },
+        {
+            "x":"max",
+            "y": "max",
+            "width" : 0.3,
+            "heigth" : 0.3,
+            "bitmapWidth": -100,
+            "bitmapHeight":-100,
+            "image":"img/cannonball.png",
+            "shape": "circle",
+            "type": "dynamic",
+            "name":"cannon ball",
+            "description": "Cannon ball 2",
+			"friction" : 1,
+			"restitution" : 0.3
+        },
+        {
+            "x": 1.9,
+            "y": "max",
+            "width" : 0.3,
+            "heigth" : 0.3,
+            "bitmapWidth": -100,
+            "bitmapHeight":-100,
+            "image":"img/cannonball.png",
+            "shape": "circle",
+            "type": "dynamic",
+            "name":"cannon ball",
+            "description": "Cannon ball 1",
+			"friction" : 1,
+			"restitution" : 0.3
+        },
+        {
+            "x":2,
+            "y": "max",
+            "width" : 0.3,
+            "heigth" : 0.8,
+            "bitmapWidth": -100,
+            "bitmapHeight":-100,
+            "image":"img/box.png",
+            "shape": "polygon",
+            "type": "kinematic",
+            "name":"cannon",
+            "description": "Cannon 1",
+			"friction" : 0,
+			"restitution" : 0
+	}        
+]}
