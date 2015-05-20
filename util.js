@@ -295,28 +295,3 @@
 	{
 		popup.classList.add('easeout');
 	}
-	
-	function googleSignIn()
-	{
-		var popup = document.getElementById('gsignin');
-
-//		var iDiv = document.createElement('div');
-//		iDiv.classList.add('g-signin2');
-//		iDiv.style.top =  eval(document.body.clientHeight/2 ).toString() + "px";
-//		iDiv.style.left =  eval(document.body.clientWidth/2 - 100).toString() + "px";
-		
-
-//		popup.appendChild(iDiv);
-		popup.classList.add('googlesignin');
-		
-//		popup.style.top = eval(document.body.clientHeight/2 ).toString() + "px";
-//		popup.style.left = eval(document.body.clientWidth/2 - 100).toString() + "px";
-//		iDiv.innerHTML = 'Cannons always point to mouse. Just click, to fire cannons. Destroy brown castle.';
-		setTimeout(easeIn, 100, popup);
-
-	}
-	
-	function easeIn(div)
-	{
-		div.classList.add('easein');
-	}

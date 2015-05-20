@@ -25,19 +25,9 @@
 		-webkit-transition: opacity 1s ease-in;
 		-moz-transition: opacity 1s ease-in;
 		transition: opacity 1s ease-in;
-		pointer-events: none;
-	}
-
-	.googlesignin.easein {
-		opacity:1;
 		pointer-events: auto;
 	}
 
-	.googlesignin.easeout {
-		opacity:0;
-		pointer-events: none;
-	}
-	
 	.googlesignin > div {
 		position: relative;
 		top : 200px;
