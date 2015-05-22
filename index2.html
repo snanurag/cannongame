@@ -1,79 +1,47 @@
 <html>
 <head>
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
   <script src="https://apis.google.com/js/api:client.js"></script>
-  <script>
-  var googleUser = {};
-  var startApp = function() {
-    gapi.load('auth2', function(){
-      // Retrieve the singleton for the GoogleAuth library and set up the client.
-      auth2 = gapi.auth2.init({
-        client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
-        cookiepolicy: 'single_host_origin',
-        // Request scopes in addition to 'profile' and 'email'
-        //scope: 'additional_scope'
-      });
-      attachSignin(document.getElementById('customBtn'));
-    });
-  };
-
-  function attachSignin(element) {
-    console.log(element.id);
-    auth2.attachClickHandler(element, {},
-        function(googleUser) {
-          document.getElementById('name').innerText = "Signed in: " +
-              googleUser.getBasicProfile().getName();
-        }, function(error) {
-          alert(JSON.stringify(error, undefined, 2));
-        });
-  }
-  </script>
   <style type="text/css">
-    #customBtn {
-      display: inline-block;
-      background: #4285f4;
-      color: white;
-      width: 190px;
-      border-radius: 5px;
-      white-space: nowrap;
-    }
-    #customBtn:hover {
-      cursor: hand;
-    }
-    span.label {
-      font-weight: bold;
+    
+	.customBtn {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: rgba(0, 0, 0, 0.8);
+		z-index: 99999;
+		-webkit-transition: opacity 1s ease-in;
+		-moz-transition: opacity 1s ease-in;
+		transition: opacity 1s ease-in;
+		pointer-events: auto;
     }
     span.icon {
-      background: url('/identity/sign-in/g-normal.png') transparent 5px 50% no-repeat;
+      background: url('frontpage/images/Blue_signin_Long_focused_44dp_v3.png');
       display: inline-block;
-      vertical-align: middle;
-      width: 42px;
-      height: 42px;
-      border-right: #2265d4 1px solid;
+      width: 237px;
+      height: 54px;
     }
-    span.buttonText {
-      display: inline-block;
-      vertical-align: middle;
-      padding-left: 42px;
-      padding-right: 42px;
-      font-size: 14px;
-      font-weight: bold;
-      /* Use the Roboto font that is loaded in the <head> */
-      font-family: 'Roboto', sans-serif;
+	.customBtn > div {
+		position: relative;
+		width: 237px;
+		height: 54px;
+		top : 200px;
+		margin : auto;
+	}
+	.customBtn > div:hover {
+		cursor: hand;
     }
+
   </style>
   </head>
   <body>
   <!-- In the callback, you would hide the gSignInWrapper element on a
   successful sign in -->
-  <div id="gSignInWrapper">
-    <span class="label">Sign in with:</span>
-    <div id="customBtn" class="customGPlusSignIn">
+    <div id="customB" class="customBtn">
+		<div id="innerdiv">
       <span class="icon"></span>
-      <span class="buttonText">Google</span>
+	  </div>
     </div>
-  </div>
-  <div id="name"></div>
-  <script>startApp();</script>
 </body>
 </html>

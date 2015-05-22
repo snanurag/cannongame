@@ -28,8 +28,26 @@
 		pointer-events: auto;
 	}
 
+	span.icon{
+      background: url('../frontpage/images/Blue_signin_Long_focused_44dp_v3.png');
+      display: inline-block;
+      vertical-align: middle;
+      width: 237px;
+      height: 54px;
+	}
+	
+	span.icon:hover{
+		cursor: hand;	
+	}
+	
 	.googlesignin > div {
 		position: relative;
+		width: 237px;
+		height: 54px;
 		top : 200px;
 		margin : auto;
+	}
+
+	.googlesignin > div :hover{
+		cursor: hand;	
 	}
