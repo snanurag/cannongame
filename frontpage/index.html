@@ -16,6 +16,7 @@
 <script type="text/javascript" src="../util.js"></script>
 <script type="text/javascript" src="../js/queryloader2.min.js"></script>
 <script type="text/javascript" src="preloader.js"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
 
 <script type="text/javascript">
 
@@ -55,10 +56,9 @@ $(document).ready(function()
 		viewline:				false, /* If set to true content_width, thumbnails, transition and dynamic_height will be disabled. As for dynamic height you need to set the width and height of images in the source. */
 		custom_function:		null /* Define a custom function that runs on content change */
 	});
-//	googleSignIn();
 });
-  var googleUser = {};
-  var startApp = function() {
+
+var startApp = function() {
     gapi.load('auth2', function(){
       // Retrieve the singleton for the GoogleAuth library and set up the client.
       auth2 = gapi.auth2.init({
@@ -71,24 +71,26 @@ $(document).ready(function()
     });
   };
 
-  function attachSignin(element) {
-    console.log(element.id);
+function attachSignin(element) {
     auth2.attachClickHandler(element, {},
         function(googleUser) {
-			signinCallback();
-			document.getElementById('name').innerText = "Signed in: " +
-            googleUser.getBasicProfile().getName();
+			signinCallback(googleUser);
         }, function(error) {
-          alert(JSON.stringify(error, undefined, 2));
-        });
-  }
+          consol.log(JSON.stringify(error, undefined, 2));
+    });
+}
 
-function signinCallback(authResult) {
+function signinCallback(googleUser) {
 
-		var popup = document.getElementById('gsignin');
-		popup.parentNode.removeChild(popup);
+	var popup = document.getElementById('gsignin');
+	popup.parentNode.removeChild(popup);
+	
+	$.get('http://winged-memory-791.appspot.com/retrievescore?email='+googleUser.getBasicProfile().getEmail(), function(data) {
+		$.cookie("clearedstages", JSON.stringify(data));
+    });
 
 }
+	
 </script>
 
 </head>

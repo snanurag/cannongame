@@ -7,6 +7,8 @@
 	<script src="../js/ivank.js"></script>
 	<script src="anims/anim_bomb.js"></script>
 	<script src="anim_utils.js"></script>
+	<script src="../js/jquery.cookie.js"></script>
+	
 	
 <!--	<script src="../js/jquery.mobile-1.3.2.min.js"></script> -->
 	<script type="text/javascript">
@@ -18,12 +20,13 @@
 		var imageH = 50;
 		
 		function Start()
-		{
+		{	
 			stage = new Stage("c");
 
 			var bg = new Bitmap( new BitmapData("images/bck_fp.png") );
 			stage.addChild(bg);
-
+			
+			
 			setStageIcon1('stage_icons/1.png', w/8, h/4);
 			setStageIcon2('stage_icons/2.png', 3*w/8, h/4);
 			setStageIcon3('stage_icons/3.png', 5*w/8, h/4);
@@ -107,6 +110,7 @@
 
 		function onMD1(e)
 		{
+//			alert( $.cookie("clearedstages") );
 			var ifrm = onMD();
 			ifrm.setAttribute("src", '../cannongame.html?level=24301.json&attempts=0');
 			
@@ -202,6 +206,7 @@
 			var ifrm = onMD();
 			ifrm.setAttribute("src", '../cannongame.html?level=5.2186478797800064E8.json&attempts=0');
 		}
+		
 		
 		
 	</script>
