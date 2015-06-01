@@ -1,3 +1,4 @@
+<!DOCTYPE HTML> <!-- html5 dtd --->
 <html>
 <head>
 <title>Awkward Showcase - Demo #1</title>
@@ -56,13 +57,14 @@ $(document).ready(function()
 		viewline:				false, /* If set to true content_width, thumbnails, transition and dynamic_height will be disabled. As for dynamic height you need to set the width and height of images in the source. */
 		custom_function:		null /* Define a custom function that runs on content change */
 	});
+	
 });
 
 var startApp = function() {
     gapi.load('auth2', function(){
       // Retrieve the singleton for the GoogleAuth library and set up the client.
       auth2 = gapi.auth2.init({
-        client_id: '954661144472-aficcagmr0hvc0tlboncrv7f8ko5532l.apps.googleusercontent.com',
+        client_id: '902747574683-k8u1v83k39ifchc8lu6lo09efqebsug7.apps.googleusercontent.com',
         cookiepolicy: 'single_host_origin',
         // Request scopes in addition to 'profile' and 'email'
         //scope: 'additional_scope'
@@ -387,17 +389,12 @@ function signinCallback(googleUser) {
 			<!--	<canvas id="c" style="width:500px; height:150px; left:0; right:0; position: absolute; margin: auto;" width="500px" height="150px"></canvas> -->
 		</div>		
 
-			<!--<div id="gsignin" class="g-signin2 googlesignin" data-onsuccess="signinCallback"></div>-->
-
-		<!--<div id="gsignin" class="googlesignin" data-onsuccess="signinCallback"></div>-->
 	    <div id="gsignin" class="googlesignin">
 			<div id="innergooglesignin">
 				<span class="icon"></span>
 			</div>	
 		</div>
-
 		<script>startApp();</script>
-
 </body>
 
 

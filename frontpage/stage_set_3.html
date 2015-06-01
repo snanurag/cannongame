@@ -79,6 +79,7 @@
 */	
 			// Creating IFrame in parent document.
 			var ifrm = window.parent.document.createElement("IFRAME");
+			ifrm.setAttribute("id", "maingameframe");
 			
 			//Resizing Iframe of parent document.
 			ifrm.style.width = window.parent.innerWidth +'px';

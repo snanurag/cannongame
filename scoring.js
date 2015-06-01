@@ -98,7 +98,11 @@
 			var nextLevel = getNextStage();
 			if(nextLevel != -1)
 			{
-				arrFrames[0].setAttribute("src", '../cannongame.html?level='+nextLevel+'&attempts=0');
+				for(var i =0; i<arrFrames.length; i++)
+				{
+					if(typeof arrFrames[i].id != undefined && arrFrames[i].id == 'maingameframe')
+						arrFrames[i].setAttribute("src", '../cannongame.html?level='+nextLevel+'&attempts=0');
+				}
 			}
 			else
 			{
@@ -107,7 +111,11 @@
 		}
 		else
 		{
-			arrFrames[0].setAttribute("src", '../cannongame.html?level='+currentLevel+'&attempts='+numOfAttempts);
+			for(var i =0; i<arrFrames.length; i++)
+			{
+				if(typeof arrFrames[i].id != undefined && arrFrames[i].id == 'maingameframe')
+					arrFrames[i].setAttribute("src", '../cannongame.html?level='+currentLevel+'&attempts=0');
+			}
 		}
 		
 		//Set default values after 
