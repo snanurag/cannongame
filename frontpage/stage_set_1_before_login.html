@@ -1,0 +1,69 @@
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<script src="../js/jquery-1.9.1.min.js"></script>
+	<script src="../js/ivank.js"></script>
+	<script src="anims/anim_bomb.js"></script>
+	<script src="anim_utils.js"></script>
+	<script src="../util.js"></script>
+	<script src="../js/jquery.cookie.js"></script>
+	
+	
+<!--	<script src="../js/jquery.mobile-1.3.2.min.js"></script> -->
+	<script type="text/javascript">
+		var stage, cur = null;
+//		alert(Math.floor(window.innerWidth));
+		var w = window.innerWidth;
+		var h = window.innerHeight;
+		
+		function Start()
+		{	
+			stage = new Stage("c");
+
+			var bg = new Bitmap( new BitmapData("images/bck_fp.png") );
+			stage.addChild(bg);
+			
+			var lastStage = 1;
+			
+			setStageIconDisabled(3*w/8, h/4);
+			setStageIconDisabled(5*w/8, h/4);
+			setStageIconDisabled(7*w/8, h/4);
+			setStageIconDisabled(w/8, 3*h/4);
+			setStageIconDisabled(3*w/8, 3*h/4);
+			setStageIconDisabled(5*w/8, 3*h/4);
+			setStageIconDisabled(7*w/8, 3*h/4);
+				
+			initializeBombAnim();
+			startBombBurningDeamon(stage, 1, lastStage);
+		}
+
+//		function onMOv(e){ e.target.alpha = 1.0; }
+//		function onMOu(e){ e.target.alpha = 0.7; }
+//		function onMU (e){ cur = null; }
+
+		
+		function setStageIcon1(image, x, y)
+		{
+			//Bitmap of stage icon
+			var b = setStageIcon(image, x, y);
+//			alert(music);
+			b.addEventListener(MouseEvent.MOUSE_DOWN, onMD1 );
+		}
+
+		function onMD1(e)
+		{
+			var ifrm = onMD();
+			ifrm.setAttribute("src", '../cannongame.html?level=24301.json&attempts=0');
+			
+		}
+
+	</script>
+</head>
+<body onload="Start();" style="overflow-y: hidden;">
+<canvas id="c" width="500" height="300"></canvas>
+</div>
+</body>
+
+</html>

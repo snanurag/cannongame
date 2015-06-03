@@ -70,7 +70,7 @@ var startApp = function() {
       });
       attachSignin(document.getElementById('innergooglesignin'));
     });
-  };
+};
 
 function attachSignin(element) {
     auth2.attachClickHandler(element, {},
@@ -90,6 +90,8 @@ function signinCallback(googleUser) {
 		$.cookie("clearedstages", JSON.stringify(data));
     });
 
+	var ifrm = document.getElementById('firstStageSet');
+	ifrm.src = 'stage_set_1.html';
 }
 	
 </script>
@@ -366,7 +368,7 @@ function signinCallback(googleUser) {
 			<!-- Each child div in #showcase represents a slide -->
 			<div class="showcase-slide" >
 				<!-- Put the slide content in a div with the class .showcase-content. -->
-				<iframe src="stage_set_1.html" width="600px" height="300px" frameborder="0"></iframe>
+				<iframe id="firstStageSet" src="stage_set_1_before_login.html" width="600px" height="300px" frameborder="0"></iframe>
 			</div>
 			<!-- Each child div in #showcase represents a slide -->
 			<div class="showcase-slide">

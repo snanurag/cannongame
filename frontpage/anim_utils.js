@@ -1,19 +1,86 @@
 var bombAnimationTriggerRate = 4000;
 
-function startBombBurningDeamon(stage, startingStage)
+function startBombBurningDeamon(stage, startingStage, lastStage)
 {
 
 	var appender;
-	appender = Math.floor(Math.random()*7);
-	
-	//Since last set of stages are not filled
-	if(startingStage == 17)
-		appender = Math.floor(Math.random()*3);
+	appender = Math.floor(Math.random()*(lastStage - startingStage));
 	
 	var stageToAnimate = startingStage + appender;
 	
 	animBomb(0, stage, stageToAnimate);
 	
-	setTimeout(startBombBurningDeamon, bombAnimationTriggerRate, stage, startingStage); 
+	setTimeout(startBombBurningDeamon, bombAnimationTriggerRate, stage, startingStage, lastStage); 
 
+}
+
+
+function setStageIconDisabled(x, y)
+{
+	var imageW = 50;
+	var imageH = 37-(50-37);
+	var imageBomb = new Bitmap(new BitmapData('stage_icons/bomb_disabled.png'));
+	imageBomb.x =  Math.floor(x - imageW);
+	imageBomb.y =  Math.floor(y - imageH);
+	stage.addChild(imageBomb);
+	imageBomb.buttonMode = true;
+}
+
+function setStageIcon(image, x, y)
+{
+
+	//Adding bomb in background
+	var imageW = 50;
+	var imageH = 50;
+	var imageBomb = new Bitmap(new BitmapData('stage_icons/bomb/bomb1.png'));
+	imageBomb.x =  Math.floor(x - imageW);
+	imageBomb.y =  Math.floor(y - imageH);
+	stage.addChild(imageBomb);
+	
+	var bd = new BitmapData(image);
+
+	var b = new Bitmap(bd);
+	b.x = Math.floor(x - imageW);
+	b.y = Math.floor(y - imageH);
+	b.buttonMode = true;
+//			b.alpha = 0.7;
+	stage.addChild(b);
+	
+//			This is how listener events are added to image.			
+//			b.addEventListener(MouseEvent.MOUSE_OVER, onMOv);
+//			b.addEventListener(MouseEvent.MOUSE_OUT , onMOu);
+//			b.addEventListener(MouseEvent.MOUSE_UP  , onMU );
+	
+	//Returning Bitmap type.
+	return b;
+}
+
+function onMD ()
+{ 
+
+	//TODO Have to enable it later and has to verify whether it will work in mozilla and opera too or not?
+/*			if(window.parent.outerHeight != window.parent.screen.availHeight || window.parent.outerWidth != window.parent.screen.availWidth)
+	{
+		alert('Please maximise browser to full size before begining the game.');
+		return;
+	}
+*/	
+	// Creating IFrame in parent document.
+	var ifrm = window.parent.document.createElement("IFRAME");
+	ifrm.setAttribute("id", "maingameframe");
+	
+	//Resizing Iframe of parent document.
+	ifrm.style.width = window.parent.innerWidth +'px';
+	ifrm.style.height = window.parent.innerHeight +'px'; 
+	window.parent.document.body.style['margin-top'] = 'auto';
+	window.parent.document.body.style['margin-bottom'] = 'auto';
+	
+	
+	//Adding frame to the body.
+	window.parent.document.body.appendChild(ifrm);
+
+	// Removing contents of parent document.	
+	$('div', window.parent.document).remove();
+	
+	return ifrm;
 }

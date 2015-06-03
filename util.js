@@ -1,10 +1,16 @@
+	var stages = ['24301.json','1.json','59203.json', '26904.json', '2.json', '8.406917822341853E8.json', '8.667454087194089E8.json', '5.2186478797800064E8.json',
+
+	'6258359.91985284.json', '3.1290327045556176E8.json', '8.11031994827002E8.json', '8.338782965651317E8.json', '7.19074501173349E7.json', '7.329634825159239E8.json', '6.167622551590418E8.json', '2.7911617107737976E8.json',
+
+	'5.455096460842246E7.json', '9.878414830850183E8.json', '9.876811297099341E7.json',	'6.149199003819513E8.json'
+	];
+	
 	var bckGrounds = ['img/bck_flag_shield.png', 'img/bck_flag_shield.png', 'img/bck_flag_shield.png', 'img/bck_flag_shield.png', 'img/bck_flag_shield.png', 'img/bck_flag_shield.png', 'img/bck_shield_torches.png', 'img/bck_shields.png', 
 	
 	'img/bck_shield_torches.png', 'img/bck_blue_flags_shield.png', 'img/bck_shield_torches.png', 'img/bck_shield_torches.png', 'img/bck_blue_flags_shield.png', 'img/bck_shield_torches.png', 'img/bck_shields.png', 'img/bck_shield_torches.png', 
 	
 	'img/bck_shield_torches.png', 'img/bck_shields.png', 'img/bck_shield_torches.png', 'img/bck_shields.png'
-	
-	]
+	];
 
 	//This function is responsible for the recoilation movement of the cannons.
 	function recoil(e)

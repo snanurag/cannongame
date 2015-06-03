@@ -16,63 +16,21 @@
 <script type="text/javascript" src="../util.js"></script>
 <script type="text/javascript" src="../js/queryloader2.min.js"></script>
 <script type="text/javascript" src="preloader.js"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
 
 <script type="text/javascript">
 
-	var startApp = function() {
-    gapi.load('auth2', function(){
-      // Retrieve the singleton for the GoogleAuth library and set up the client.
-      auth2 = gapi.auth2.init({
-        client_id: '954661144472-aficcagmr0hvc0tlboncrv7f8ko5532l.apps.googleusercontent.com',
-        cookiepolicy: 'single_host_origin',
-        // Request scopes in addition to 'profile' and 'email'
-        //scope: 'additional_scope'
-      });
-      attachSignin(document.getElementById('innergooglesignin'));
-    });
-  };
-
-  function attachSignin(element) {
-    auth2.attachClickHandler(element, {},
-        function(googleUser) {
-			signinCallback(googleUser);
-        }, function(error) {
-          consol.log(JSON.stringify(error, undefined, 2));
-        });
-  }
-
-function signinCallback(googleUser) {
-
-	var popup = document.getElementById('gsignin');
-	popup.parentNode.removeChild(popup);
 	
-	$.get('http://winged-memory-791.appspot.com/retrievescore?email='+googleUser.getBasicProfile().getEmail(), function(data) {
-        console.log('fired query');
-		
-		alert(data);
-		
-    });
-	console.log(googleUser.getBasicProfile().getEmail());
-}
-
 </script>
 
 </head>
 <body>
-
-<!--	<div id='firstscr' class="firstscreen"> -->
-		<!-- TODO Either change content slider for different browsers or make iFrame size adjustments for different browsers in this content slider only -->
-		<!--<div id="gsignin" class="g-signin2 googlesignin" data-onsuccess="signinCallback"></div>-->
-
-		<!--<div id="gsignin" class="googlesignin" data-onsuccess="signinCallback"></div>-->
 	    <div id="gsignin" class="googlesignin">
 			<div id="innergooglesignin">
 				<span class="icon"></span>
 			</div>	
 		</div>
-
 		<script>startApp();</script>
-
 </body>
 
 
