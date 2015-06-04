@@ -1,47 +1,15 @@
 <html>
 <head>
-  <script src="https://apis.google.com/js/api:client.js"></script>
-  <style type="text/css">
-    
-	.customBtn {
-		position: fixed;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		background: rgba(0, 0, 0, 0.8);
-		z-index: 99999;
-		-webkit-transition: opacity 1s ease-in;
-		-moz-transition: opacity 1s ease-in;
-		transition: opacity 1s ease-in;
-		pointer-events: auto;
-    }
-    span.icon {
-      background: url('frontpage/images/Blue_signin_Long_focused_44dp_v3.png');
-      display: inline-block;
-      width: 237px;
-      height: 54px;
-    }
-	.customBtn > div {
-		position: relative;
-		width: 237px;
-		height: 54px;
-		top : 200px;
-		margin : auto;
-	}
-	.customBtn > div:hover {
-		cursor: hand;
-    }
 
-  </style>
-  </head>
-  <body>
-  <!-- In the callback, you would hide the gSignInWrapper element on a
-  successful sign in -->
-    <div id="customB" class="customBtn">
-		<div id="innerdiv">
-      <span class="icon"></span>
-	  </div>
-    </div>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript">
+	function start()
+	{
+		$.cookie('cannongameemail', 'it is me up in path');
+	}
+    </script>
+</head>
+<body onload="start();">
 </body>
 </html>

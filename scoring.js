@@ -61,6 +61,8 @@
 			
 			displayScore(iDiv, score, score/scoreParts, stars);
 			
+			$.get('http://winged-memory-791.appspot.com/storescore?email='+$.cookie('cannongameemail')+'&'+currentLevel+'='+stars);
+			
 			numOfAttempts = 0;
 			
 		}

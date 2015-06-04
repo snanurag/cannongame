@@ -86,12 +86,14 @@ function signinCallback(googleUser) {
 	var popup = document.getElementById('gsignin');
 	popup.parentNode.removeChild(popup);
 	
+	$.cookie('cannongameemail', googleUser.getBasicProfile().getEmail(), { path:'/'});
+    
 	$.get('http://winged-memory-791.appspot.com/retrievescore?email='+googleUser.getBasicProfile().getEmail(), function(data) {
 		$.cookie("clearedstages", JSON.stringify(data));
+		var ifrm = document.getElementById('firstStageSet');
+		ifrm.src = 'stage_set_1.html';
     });
 
-	var ifrm = document.getElementById('firstStageSet');
-	ifrm.src = 'stage_set_1.html';
 }
 	
 </script>

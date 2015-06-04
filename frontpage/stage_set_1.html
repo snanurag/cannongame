@@ -30,7 +30,8 @@
 			
 			setStageIcon1('stage_icons/1.png', w/8, h/4);
 			
-			if(clearedStages.hasOwnProperty(stages[1]))
+			//Open next stage if this is cleared
+			if(clearedStages.hasOwnProperty(stages[0]))
 			{
 				setStageIcon2('stage_icons/2.png', 3*w/8, h/4);
 				lastStage += 1;
@@ -38,7 +39,7 @@
 			else
 				setStageIconDisabled(3*w/8, h/4);
 				
-			if(clearedStages.hasOwnProperty(stages[2]))
+			if(clearedStages.hasOwnProperty(stages[1]))
 			{
 				setStageIcon3('stage_icons/3.png', 5*w/8, h/4);
 				lastStage += 1;
@@ -46,7 +47,7 @@
 			else
 				setStageIconDisabled(5*w/8, h/4);
 
-			if(clearedStages.hasOwnProperty(stages[3]))
+			if(clearedStages.hasOwnProperty(stages[2]))
 			{
 			setStageIcon4('stage_icons/4.png', 7*w/8, h/4);
 				lastStage += 1;
@@ -55,7 +56,7 @@
 				setStageIconDisabled(7*w/8, h/4);
 
 				
-			if(clearedStages.hasOwnProperty(stages[4]))
+			if(clearedStages.hasOwnProperty(stages[3]))
 			{
 				setStageIcon5('stage_icons/5.png', w/8, 3*h/4);
 				lastStage += 1;
@@ -63,7 +64,7 @@
 			else
 				setStageIconDisabled(w/8, 3*h/4);
 
-			if(clearedStages.hasOwnProperty(stages[5]))
+			if(clearedStages.hasOwnProperty(stages[4]))
 			{
 				setStageIcon6('stage_icons/6.png', 3*w/8, 3*h/4);
 				lastStage += 1;
@@ -71,7 +72,7 @@
 			else
 				setStageIconDisabled(3*w/8, 3*h/4);
 
-			if(clearedStages.hasOwnProperty(stages[6]))
+			if(clearedStages.hasOwnProperty(stages[5]))
 			{
 				setStageIcon7('stage_icons/7.png', 5*w/8, 3*h/4);
 				lastStage += 1;
@@ -79,7 +80,7 @@
 			else
 				setStageIconDisabled(5*w/8, 3*h/4);
 
-			if(clearedStages.hasOwnProperty(stages[7]))
+			if(clearedStages.hasOwnProperty(stages[6]))
 			{
 				setStageIcon8('stage_icons/8.png', 7*w/8, 3*h/4);
 				lastStage += 1;
