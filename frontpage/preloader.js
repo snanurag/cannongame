@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded', function() {
         percentage: true,
         barHeight: 1,
         minimumTime: 200,
-		maxTime: 60000,
+		maxTime: 300000,
         fadeOutTime: 1000
     });
 });

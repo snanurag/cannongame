@@ -1,4 +1,4 @@
-	var soundFilesAgainstStages = [new Audio('sounds/bg1.ogg'),new Audio('sounds/bg1.ogg'),new Audio('sounds/bg1.ogg'),new Audio('sounds/bg1.ogg'),new Audio('sounds/bg2.ogg'),new Audio('sounds/bg2.ogg'),new Audio('sounds/bg2.ogg'),new Audio('sounds/bg2.ogg'),new Audio('sounds/bg3.ogg'),new Audio('sounds/bg3.ogg'),new Audio('sounds/bg3.ogg'),new Audio('sounds/bg3.ogg'),new Audio('sounds/bg1.ogg'),new Audio('sounds/bg1.ogg'),new Audio('sounds/bg1.ogg'),new Audio('sounds/bg1.ogg'),new Audio('sounds/bg2.ogg'),new Audio('sounds/bg2.ogg'),new Audio('sounds/bg2.ogg'),new Audio('sounds/bg2.ogg'),new Audio('sounds/bg3.ogg'),new Audio('sounds/bg3.ogg'),new Audio('sounds/bg3.ogg'),new Audio('sounds/bg3.ogg')];
+	var backgroundSoundFile = new Audio('sounds/bg1.ogg');
 	
 	function playFiringSound()
 	{
@@ -15,12 +15,12 @@
 	
 	function playBackgroundSound(level)
 	{
-		playLoopBack(soundFilesAgainstStages[level - 1]);
+		playLoopBack(backgroundSoundFile);
 	}
 	
 	function stopBackgroundSound(level)
 	{
-		stopLoopBack(soundFilesAgainstStages[level - 1]);
+		stopLoopBack(backgroundSoundFile);
 	}
 	
 	function playLoopBack(audio)
