@@ -22,11 +22,14 @@
 		{	
 			stage = new Stage("c");
 
+			stage.addEventListener(Event.ENTER_FRAME, onEnterFrame);
+
 			var bg = new Bitmap( new BitmapData("images/bck_fp.png") );
 			stage.addChild(bg);
 			
 			var lastStage = 1;
 			
+			setStageIcon1('stage_icons/1.png', w/8, h/4);
 			setStageIconDisabled(3*w/8, h/4);
 			setStageIconDisabled(5*w/8, h/4);
 			setStageIconDisabled(7*w/8, h/4);

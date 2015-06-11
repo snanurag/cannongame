@@ -1,4 +1,4 @@
-	var backgroundSoundFile = new Audio('sounds/bg1.ogg');
+	var backgroundSoundFile = new Audio('/cg/sounds/bg1.ogg');
 	
 	function playFiringSound()
 	{

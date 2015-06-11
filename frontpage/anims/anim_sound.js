@@ -50,15 +50,18 @@ function animSound(counter, stage)
 
 		if(counter < count_sound)
 		{
-			arr_sound[counter].x = Math.floor(3*w/8 - soundWidth);
-			arr_sound[counter].y = Math.floor(h/2- soundHeight - soundHeightShift);
+			if(inFrame)
+			{
+				arr_sound[counter].x = Math.floor(3*w/8 - soundWidth);
+				arr_sound[counter].y = Math.floor(h/2- soundHeight - soundHeightShift);
 
-			stage.removeChild(arr_sound[counter-1]);
-			arr_sound[counter].addEventListener(MouseEvent.MOUSE_DOWN, eval(soundlistenerp));
+				stage.removeChild(arr_sound[counter-1]);
+				arr_sound[counter].addEventListener(MouseEvent.MOUSE_DOWN, eval(soundlistenerp));
 
-			arr_sound[counter].buttonMode = true;
-			stage.addChild(arr_sound[counter]);
-			counter++;
+				arr_sound[counter].buttonMode = true;
+				stage.addChild(arr_sound[counter]);
+				counter++;
+			}
 			setTimeout(animSound, FRAME_RATE_SOUND, counter, stage); 
 		}
 		else

@@ -38,15 +38,18 @@ function animTracer(counter, stage)
 
 		if(counter < count_tracer)
 		{
-			arr_tracer[counter].x = Math.floor(5*w/8 - tracerWidth);
-			arr_tracer[counter].y = Math.floor(h/2- tracerHeight - tracerHeightShift);
+			if(inFrame)
+			{
+				arr_tracer[counter].x = Math.floor(5*w/8 - tracerWidth);
+				arr_tracer[counter].y = Math.floor(h/2- tracerHeight - tracerHeightShift);
 
-			stage.removeChild(arr_tracer[counter-1]);
-			arr_tracer[counter].addEventListener(MouseEvent.MOUSE_DOWN, eval(tracerlistenerp));
+				stage.removeChild(arr_tracer[counter-1]);
+				arr_tracer[counter].addEventListener(MouseEvent.MOUSE_DOWN, eval(tracerlistenerp));
 
-			arr_tracer[counter].buttonMode = true;
-			stage.addChild(arr_tracer[counter]);
-			counter++;
+				arr_tracer[counter].buttonMode = true;
+				stage.addChild(arr_tracer[counter]);
+				counter++;
+			}
 			setTimeout(animTracer, FRAME_RATE_TRACER, counter, stage); 
 		}
 		else

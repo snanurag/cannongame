@@ -20,6 +20,7 @@
 		function Start()
 		{
 			stage = new Stage("c");
+			stage.addEventListener(Event.ENTER_FRAME, onEnterFrame);
 
 			var bg = new Bitmap( new BitmapData("images/bck_fp.png") );
 			stage.addChild(bg);

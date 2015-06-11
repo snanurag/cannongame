@@ -1,17 +1,19 @@
 var bombAnimationTriggerRate = 4000;
+var inFrame = false;
 
 function startBombBurningDeamon(stage, startingStage, lastStage)
 {
 
 	var appender;
-	appender = Math.floor(Math.random()*(lastStage - startingStage));
+	appender = Math.round(Math.random()*(lastStage - startingStage));
 	
 	var stageToAnimate = startingStage + appender;
 	
 	animBomb(0, stage, stageToAnimate);
 	
 	setTimeout(startBombBurningDeamon, bombAnimationTriggerRate, stage, startingStage, lastStage); 
-
+	
+	inFrame = false
 }
 
 
@@ -83,4 +85,9 @@ function onMD ()
 	$('div', window.parent.document).remove();
 	
 	return ifrm;
+}
+
+function onEnterFrame(e)
+{
+	inFrame = true;
 }

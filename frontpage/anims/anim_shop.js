@@ -37,15 +37,18 @@ function animShop(counter, stage)
 
 		if(counter < count_shop)
 		{
-			arr_shop[counter].x = Math.floor(7*w/8 - shopWidth);
-			arr_shop[counter].y = Math.floor(h/2- shopHeight - shopHeightShift);
+			if(inFrame)
+			{
+				arr_shop[counter].x = Math.floor(7*w/8 - shopWidth);
+				arr_shop[counter].y = Math.floor(h/2- shopHeight - shopHeightShift);
 
-			stage.removeChild(arr_shop[counter-1]);
-			arr_shop[counter].addEventListener(MouseEvent.MOUSE_DOWN, eval(shoplistener));
+				stage.removeChild(arr_shop[counter-1]);
+				arr_shop[counter].addEventListener(MouseEvent.MOUSE_DOWN, eval(shoplistener));
 
-			arr_shop[counter].buttonMode = true;
-			stage.addChild(arr_shop[counter]);
-			counter++;
+				arr_shop[counter].buttonMode = true;
+				stage.addChild(arr_shop[counter]);
+				counter++;
+			}
 			setTimeout(animShop, FRAME_RATE_SHOP, counter, stage); 
 		}
 		else

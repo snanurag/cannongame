@@ -41,15 +41,19 @@ function animMusic(counter, stage)
 
 		if(counter < count_music)
 		{
-			arr_music[counter].x = Math.floor(w/8 - musicWidth);
-			arr_music[counter].y = Math.floor(h/2- musicHeight - musicHeightShift);
+			//Because of this block, flag will move only when in frame. Otherwise it will stay in loop but no removal and addition in stage.
+			if(inFrame)
+			{
+				arr_music[counter].x = Math.floor(w/8 - musicWidth);
+				arr_music[counter].y = Math.floor(h/2- musicHeight - musicHeightShift);
 
-			stage.removeChild(arr_music[counter-1]);
-			arr_music[counter].addEventListener(MouseEvent.MOUSE_DOWN, eval(musiclistenerp));
+				stage.removeChild(arr_music[counter-1]);
+				arr_music[counter].addEventListener(MouseEvent.MOUSE_DOWN, eval(musiclistenerp));
 
-			arr_music[counter].buttonMode = true;
-			stage.addChild(arr_music[counter]);
-			counter++;
+				arr_music[counter].buttonMode = true;
+				stage.addChild(arr_music[counter]);
+				counter++;
+			}
 			setTimeout(animMusic, FRAME_RATE_MUSIC, counter, stage); 
 		}
 		else
