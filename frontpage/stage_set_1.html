@@ -19,7 +19,7 @@
 		var h = window.innerHeight;
 		
 		function Start()
-		{	
+		{
 			stage = new Stage("c");
 
 			stage.addEventListener(Event.ENTER_FRAME, onEnterFrame);
@@ -90,21 +90,15 @@
 			else
 				setStageIconDisabled(7*w/8, 3*h/4);
 				
-
-
 			initializeBombAnim();
 			startBombBurningDeamon(stage, 1, lastStage);
 		}
 
-//		function onMOv(e){ e.target.alpha = 1.0; }
-//		function onMOu(e){ e.target.alpha = 0.7; }
-//		function onMU (e){ cur = null; }
 		
 		function setStageIcon1(image, x, y)
 		{
 			//Bitmap of stage icon
 			var b = setStageIcon(image, x, y);
-//			alert(music);
 			b.addEventListener(MouseEvent.MOUSE_DOWN, onMD1 );
 		}
 

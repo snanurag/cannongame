@@ -21,7 +21,14 @@
 		function Start()
 		{	
 			stage = new Stage("c");
-
+			
+			if($.cookie('cannongameemail') != undefined)
+			{
+				var ifrm = window.parent.document.getElementById('firstStageSet');
+				ifrm.src = 'stage_set_1.html';
+				return;
+			}
+			
 			stage.addEventListener(Event.ENTER_FRAME, onEnterFrame);
 
 			var bg = new Bitmap( new BitmapData("images/bck_fp.png") );

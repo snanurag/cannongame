@@ -47,38 +47,37 @@ function animBomb(counter, stage, stage_no)
 {
 	// This ensures that this animation is run only once on contact.
 
+	if(counter < count_tower)
+	{
 		if(inFrame)
 		{
-			if(counter < count_tower)
-			{
-				arr_bomb[counter].x = Math.floor(stagesX[stage_no - 1] - bombWidth);
-				arr_bomb[counter].y = Math.floor(stagesY[stage_no - 1]- bombHeight);
+			arr_bomb[counter].x = Math.floor(stagesX[stage_no - 1] - bombWidth);
+			arr_bomb[counter].y = Math.floor(stagesY[stage_no - 1]- bombHeight);
 
-				stage.removeChild(arr_bomb[counter-1]);
+			stage.removeChild(arr_bomb[counter-1]);
 
-				stage.addChild(arr_bomb[counter]);
-				counter++;
-				setTimeout(animBomb, FRAME_RATE_BOMB, counter, stage, stage_no); 
-			}
-			else
-			{
-				//Setting original bomb image
-
-				stage.removeChild(arr_bomb[counter-1]);
-
-				arr_bomb[0].x = Math.floor(stagesX[stage_no - 1] - bombWidth);
-				arr_bomb[0].y = Math.floor(stagesY[stage_no - 1]- bombHeight);
-				
-				stage.addChild(arr_bomb[0]);
-			}
-			
-			stage_no_images[stage_no -1].x = Math.floor(stagesX[stage_no - 1] - bombWidth);
-			stage_no_images[stage_no -1].y = Math.floor(stagesY[stage_no - 1]- bombHeight);
-			stage_no_images[stage_no -1].addEventListener(MouseEvent.MOUSE_DOWN, eval(listeners[stage_no-1]));
-			stage_no_images[stage_no -1].buttonMode = true;
-
-			stage.addChild(stage_no_images[stage_no -1]);
-			
+			stage.addChild(arr_bomb[counter]);
+			counter++;
 		}
+		setTimeout(animBomb, FRAME_RATE_BOMB, counter, stage, stage_no); 
+	}
+	else
+	{
+		//Setting original bomb image
+
+		stage.removeChild(arr_bomb[counter-1]);
+
+		arr_bomb[0].x = Math.floor(stagesX[stage_no - 1] - bombWidth);
+		arr_bomb[0].y = Math.floor(stagesY[stage_no - 1]- bombHeight);
+		
+		stage.addChild(arr_bomb[0]);
+	}
+		
+	stage_no_images[stage_no -1].x = Math.floor(stagesX[stage_no - 1] - bombWidth);
+	stage_no_images[stage_no -1].y = Math.floor(stagesY[stage_no - 1]- bombHeight);
+	stage_no_images[stage_no -1].addEventListener(MouseEvent.MOUSE_DOWN, eval(listeners[stage_no-1]));
+	stage_no_images[stage_no -1].buttonMode = true;
+
+	stage.addChild(stage_no_images[stage_no -1]);
 		
 }

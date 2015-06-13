@@ -109,7 +109,7 @@
 			for(var i =0; i<arrFrames.length; i++)
 			{
 				if(typeof arrFrames[i].id != undefined && arrFrames[i].id == 'maingameframe')
-					arrFrames[i].setAttribute("src", '../cannongame.html?level='+currentLevel+'&attempts=0');
+					arrFrames[i].setAttribute("src", '../cannongame.html?level='+currentLevel+'&attempts='+numOfAttempts);
 			}
 		}
 		
@@ -174,7 +174,13 @@
 		{
 
 			div.innerHTML = 'Score : '+Math.floor(score)+'<br>';
-			if(stars == 1)
+			if(stars == 0)
+			{
+				div.innerHTML += "<img src='img/empty_star.png'/> ";
+				div.innerHTML += "<img src='img/empty_star.png'/> ";
+				div.innerHTML += "<img src='img/empty_star.png'/>";
+			}
+			else if(stars == 1)
 			{
 				div.innerHTML += "<img src='img/golden_star.png'/> ";
 				div.innerHTML += "<img src='img/empty_star.png'/> ";
