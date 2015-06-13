@@ -96,7 +96,12 @@
 				for(var i =0; i<arrFrames.length; i++)
 				{
 					if(typeof arrFrames[i].id != undefined && arrFrames[i].id == 'maingameframe')
-						arrFrames[i].setAttribute("src", '../cannongame.html?level='+nextLevel+'&attempts=0');
+					{
+						if(getStage(nextLevel)%4 == 0)
+							arrFrames[i].setAttribute("src", '../cannongame_ads.html?level='+nextLevel+'&attempts=0');
+						else
+							arrFrames[i].setAttribute("src", '../cannongame.html?level='+nextLevel+'&attempts=0');
+					}
 				}
 			}
 			else
@@ -109,7 +114,12 @@
 			for(var i =0; i<arrFrames.length; i++)
 			{
 				if(typeof arrFrames[i].id != undefined && arrFrames[i].id == 'maingameframe')
-					arrFrames[i].setAttribute("src", '../cannongame.html?level='+currentLevel+'&attempts='+numOfAttempts);
+				{
+					if((numOfAttempts+1)%4 == 0)
+						arrFrames[i].setAttribute("src", '../cannongame_ads.html?level='+currentLevel+'&attempts='+numOfAttempts);
+					else
+						arrFrames[i].setAttribute("src", '../cannongame.html?level='+currentLevel+'&attempts='+numOfAttempts);
+				}
 			}
 		}
 		

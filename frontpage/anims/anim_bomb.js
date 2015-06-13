@@ -58,8 +58,13 @@ function animBomb(counter, stage, stage_no)
 
 			stage.addChild(arr_bomb[counter]);
 			counter++;
+			setTimeout(animBomb, FRAME_RATE_BOMB, counter, stage, stage_no); 
 		}
-		setTimeout(animBomb, FRAME_RATE_BOMB, counter, stage, stage_no); 
+		else
+		{
+			stage.removeChild(arr_bomb[counter-1]);
+		}
+	
 	}
 	else
 	{
