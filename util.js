@@ -262,6 +262,7 @@
 			popup.classList.add('easein');
 			popup.style.top = 50;
 			iDiv.style.left =  30;
+			iDiv.style.height = 150;
 			iDiv.innerHTML = 'Cannons always point to mouse. Just click, to fire cannons. Destroy brown castle.';
 		}
 		else if(stage_no == 2)
