@@ -10,7 +10,7 @@
 	<script src="anims/anim_sound.js"></script>
 	<script src="anims/anim_music.js"></script>
 	<script src="anims/anim_tracer.js"></script>
-	<script src="anims/anim_shop.js"></script>
+	<script src="anims/anim_credit.js"></script>
 
 	<script type="text/javascript">
 	
@@ -146,7 +146,8 @@
 		
 		function onMDShop(e)
 		{
-			alert('have to develop shop page');
+			var ifrm = onMD();
+			ifrm.setAttribute("src", 'credit_page.html');
 		}
 		
 	</script>
