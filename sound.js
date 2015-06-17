@@ -1,4 +1,15 @@
 	var backgroundSoundFile = new Audio('/cg/sounds/bg1.ogg');
+	var cannonSounds = [new Audio('/cg/sounds/cannon.ogg'), new Audio('/cg/sounds/cannon.ogg')];
+	
+	function playCannon1Sound()
+	{
+		cannonSounds[0].play();
+	}
+	
+	function playCannon2Sound()
+	{
+		cannonSounds[1].play();
+	}
 	
 	function playFiringSound()
 	{

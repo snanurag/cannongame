@@ -217,7 +217,10 @@
 					//Play sound
 					if(sound == 'on')
 					{
-						playFiringSound();
+						if(i == 0)
+							playCannon1Sound();
+						else
+							playCannon2Sound();
 					}
 				}
 			
