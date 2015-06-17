@@ -1,3 +1,5 @@
+var blockerCounter = 0;
+
 function loadstage(stage, world, level)
 {
 	$.getJSON("stages/"+level, function(data) {
@@ -134,6 +136,9 @@ function addObjectToStage(stage, world, fixtureX, fixtureY, fixtureWidth, fixtur
 			imageLoc = getAppropriateBlocker(fixtureWidth*SCALE, fixtureHeight*SCALE);
 			bitmapWidth = getAppropriateBitmapWidth(fixtureWidth*SCALE);
 			bitmapHeight = getAppropriateBitmapHeight(fixtureHeight*SCALE);
+			
+			//It will help in making all the blockers distinct.
+			name = 'blocker' + ++blockerCounter;
 		}
 
 		

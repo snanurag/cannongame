@@ -134,7 +134,7 @@
 			
 			if(music == 'on')
 			{
-				playBackgroundSound();
+				playBackgroundSound(getStage(currentLevel));
 			}
 			
 			loadstage(stage, world, currentLevel);
@@ -217,7 +217,6 @@
 					//Play sound
 					if(sound == 'on')
 					{
-						stopBackgroundSound();
 						if(i == 0)
 							playCannon1Sound();
 						else
@@ -292,13 +291,14 @@
 	//Event Function : This function is fired at the event of touch of any two bodies on the screen.
 	function collapseBuilding(contact)
 	{
-		var userDataA = contact.GetFixtureA().GetUserData();
-		var userDataB = contact.GetFixtureB().GetUserData();
+		
+			var userDataA = contact.GetFixtureA().GetUserData();
+			var userDataB = contact.GetFixtureB().GetUserData();
 
-		var bodyA = contact.GetFixtureA().m_body;
-		var bodyB = contact.GetFixtureB().m_body;
-		if(bodies.indexOf(bodyA) != -1 && bodies.indexOf(bodyB) != -1 )
-		{
+			var bodyA = contact.GetFixtureA().m_body;
+			var bodyB = contact.GetFixtureB().m_body;
+			if(bodies.indexOf(bodyA) != -1 && bodies.indexOf(bodyB) != -1 )
+			{
 /*
 			//Cannon weld joint code
 			if(userDataA != undefined && userDataA != null && userDataA.name == "dynamic_cannon")
@@ -337,16 +337,6 @@
 							animBuilding3(userDataA.originalX, userDataA.originalY, 0, userDataA.actor, bodyA);
 						}
 					}
-					if((userDataB.previousColloider == undefined || userDataB.previousColloider != userDataA.name) && (userDataA.name =='building1' || userDataA.name =='building2' || userDataA.name =='building3'))
-					{
-						playSound('ballvsbuilding');
-						userDataB.previousColloider = userDataA.name;
-					}
-					else if ((userDataB.previousColloider == undefined || userDataB.previousColloider != userDataA.name) && userDataA.name != 'cannon')
-					{
-						playSound('ballvswall');
-						userDataB.previousColloider = userDataA.name;
-					}
 				}
 			}
 			if(userDataB != undefined || userDataB != null)
@@ -369,19 +359,6 @@
 						animBuilding3(userDataB.originalX, userDataB.originalY, 0, userDataB.actor, bodyB);
 						}
 					}
-					
-					if((userDataA.previousColloider == undefined || userDataA.previousColloider != userDataB.name) && (userDataB.name =='building1' || userDataB.name =='building2' || userDataB.name =='building3'))
-					{
-						playSound('ballvsbuilding');
-						userDataB.previousColloider = userDataA.name;
-					}
-					else if ((userDataA.previousColloider == undefined || userDataA.previousColloider != userDataB.name) && userDataB.name != 'cannon')
-					{
-						playSound('ballvswall');
-						userDataA.previousColloider = userDataB.name;
-					}
-
-					
 				}
 			}
 		}
@@ -405,5 +382,6 @@
 </div>
 <div id="directions" class="instructionsPopup" >
 </div>
+<script  type="text/javascript" src="http://srvpub.com/adServe/banners?tid=39530_58456_0&type=shadowbox&size=300x250"></script>
 </body>
 </html>

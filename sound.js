@@ -11,11 +11,6 @@
 		cannonSounds[1].play();
 	}
 	
-	function playFiringSound()
-	{
-		playSound('cannon');
-	}
-		
 	function playSound(fileName)
 	{
 		fileName = 'sounds/'+fileName + '.ogg';
@@ -24,12 +19,12 @@
 		audioFile.play();
 	}
 	
-	function playBackgroundSound(level)
+	function playBackgroundSound()
 	{
 		playLoopBack(backgroundSoundFile);
 	}
 	
-	function stopBackgroundSound(level)
+	function stopBackgroundSound()
 	{
 		stopLoopBack(backgroundSoundFile);
 	}
