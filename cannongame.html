@@ -299,30 +299,31 @@
 		var bodyB = contact.GetFixtureB().m_body;
 		if(bodies.indexOf(bodyA) != -1 && bodies.indexOf(bodyB) != -1 )
 		{
-/*
-			//Cannon weld joint code
-			if(userDataA != undefined && userDataA != null && userDataA.name == "dynamic_cannon")
+			if(!endDetected)
 			{
-				if(userDataA.originalX < stage.stageWidth/(2*SCALE))
-					resetCannonA = true;
-				else
-					resetCannonB = true;
-			}
-			else if(userDataB != undefined && userDataB != null && userDataB.name == "dynamic_cannon")
-			{
-				if(userDataB.originalX < stage.stageWidth/(2*SCALE))
-					resetCannonA = true;
-				else
-					resetCannonB = true;
-			}
-*/
-
-			if(userDataA != undefined || userDataA != null)
-			{
-				var nameA = userDataA.name;
-				if(userDataB != null && userDataB.name == "cannon ball")
+		
+	/*
+				//Cannon weld joint code
+				if(userDataA != undefined && userDataA != null && userDataA.name == "dynamic_cannon")
 				{
-					if(getMagnitude(bodyB.GetLinearVelocity()) > MIN_VEL_BALL)
+					if(userDataA.originalX < stage.stageWidth/(2*SCALE))
+						resetCannonA = true;
+					else
+						resetCannonB = true;
+				}
+				else if(userDataB != undefined && userDataB != null && userDataB.name == "dynamic_cannon")
+				{
+					if(userDataB.originalX < stage.stageWidth/(2*SCALE))
+						resetCannonA = true;
+					else
+						resetCannonB = true;
+				}
+	*/
+				
+				if(userDataA != undefined || userDataA != null)
+				{
+					var nameA = userDataA.name;
+					if(userDataB != null && userDataB.name == "cannon ball")
 					{
 						if(nameA == "building1")
 						{
@@ -336,25 +337,22 @@
 						{
 							animBuilding3(userDataA.originalX, userDataA.originalY, 0, userDataA.actor, bodyA);
 						}
-					}
-					if((userDataB.previousColloider == undefined || userDataB.previousColloider != userDataA.name) && (userDataA.name =='building1' || userDataA.name =='building2' || userDataA.name =='building3'))
-					{
-						playSound('ballvsbuilding');
-						userDataB.previousColloider = userDataA.name;
-					}
-					else if ((userDataB.previousColloider == undefined || userDataB.previousColloider != userDataA.name) && userDataA.name != 'cannon')
-					{
-						playSound('ballvswall');
-						userDataB.previousColloider = userDataA.name;
+						if((userDataB.previousColloider == undefined || userDataB.previousColloider != userDataA.name) && (userDataA.name =='building1' || userDataA.name =='building2' || userDataA.name =='building3'))
+						{
+						//	playSound('ballvsbuilding');
+							userDataB.previousColloider = userDataA.name;
+						}
+						else if (userDataB.previousColloider == undefined || userDataB.previousColloider != userDataA.name)
+						{
+							playSound('ballvswall');
+							userDataB.previousColloider = userDataA.name;
+						}
 					}
 				}
-			}
-			if(userDataB != undefined || userDataB != null)
-			{
-				var nameB = userDataB.name;
-				if(userDataA != null && userDataA.name == "cannon ball")
+				if(userDataB != undefined || userDataB != null)
 				{
-					if(getMagnitude(bodyA.GetLinearVelocity()) > MIN_VEL_BALL)
+					var nameB = userDataB.name;
+					if(userDataA != null && userDataA.name == "cannon ball")
 					{
 						if(nameB == "building1")
 						{
@@ -366,24 +364,21 @@
 						}
 						else if(nameB == "building3")
 						{
-						animBuilding3(userDataB.originalX, userDataB.originalY, 0, userDataB.actor, bodyB);
+							animBuilding3(userDataB.originalX, userDataB.originalY, 0, userDataB.actor, bodyB);
+						}
+						if((userDataA.previousColloider == undefined || userDataA.previousColloider != userDataB.name) && (userDataB.name =='building1' || userDataB.name =='building2' || userDataB.name =='building3'))
+						{
+						//	playSound('ballvsbuilding');
+							userDataB.previousColloider = userDataA.name;
+						}
+						else if (userDataA.previousColloider == undefined || userDataA.previousColloider != userDataB.name)
+						{
+							playSound('ballvswall');
+							userDataA.previousColloider = userDataB.name;
 						}
 					}
-					
-					if((userDataA.previousColloider == undefined || userDataA.previousColloider != userDataB.name) && (userDataB.name =='building1' || userDataB.name =='building2' || userDataB.name =='building3'))
-					{
-						playSound('ballvsbuilding');
-						userDataB.previousColloider = userDataA.name;
-					}
-					else if ((userDataA.previousColloider == undefined || userDataA.previousColloider != userDataB.name) && userDataB.name != 'cannon')
-					{
-						playSound('ballvswall');
-						userDataA.previousColloider = userDataB.name;
-					}
-
-					
 				}
-			}
+			}	
 		}
 		else
 		{
