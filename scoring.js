@@ -61,6 +61,8 @@
 			
 			displayScore(iDiv, score, score/scoreParts, stars);
 			
+			playSound('winning');
+			
 			$.get('http://winged-memory-791.appspot.com/storescore?email='+$.cookie('cannongameemail')+'&'+currentLevel+'='+stars);
 			
 			numOfAttempts = 0;
@@ -70,6 +72,8 @@
 		{
 			numOfAttempts++;
 
+			playSound('fail');
+			
 			iDiv.innerHTML = '<p>Failed!!</p>';
 
 			setTimeout(changeInnerHTML, 3500, iDiv, '<p> Try Again !! </p>');

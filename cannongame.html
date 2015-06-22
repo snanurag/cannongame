@@ -339,7 +339,7 @@
 						}
 						if((userDataB.previousColloider == undefined || userDataB.previousColloider != userDataA.name) && (userDataA.name =='building1' || userDataA.name =='building2' || userDataA.name =='building3'))
 						{
-						//	playSound('ballvsbuilding');
+							playSound('ballvsbuilding');
 							userDataB.previousColloider = userDataA.name;
 						}
 						else if (userDataB.previousColloider == undefined || userDataB.previousColloider != userDataA.name)
@@ -368,7 +368,7 @@
 						}
 						if((userDataA.previousColloider == undefined || userDataA.previousColloider != userDataB.name) && (userDataB.name =='building1' || userDataB.name =='building2' || userDataB.name =='building3'))
 						{
-						//	playSound('ballvsbuilding');
+							playSound('ballvsbuilding');
 							userDataB.previousColloider = userDataA.name;
 						}
 						else if (userDataA.previousColloider == undefined || userDataA.previousColloider != userDataB.name)
