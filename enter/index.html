@@ -14,8 +14,6 @@
 <script type="text/javascript" src="jquery.aw-showcase.js"></script>
 <script type="text/javascript" src="../js/ivank.js"></script>
 <script type="text/javascript" src="../util.js"></script>
-<script type="text/javascript" src="../js/queryloader2.min.js"></script>
-<script type="text/javascript" src="preloader.js"></script>
 <script type="text/javascript" src="../js/jquery.cookie.js"></script>
 <script type="text/javascript" src="../sound.js"></script>
 
@@ -136,13 +134,14 @@ function displayStages(email)
 
     });
 }
+
 </script>
 
 </head>
 <body style="background-image:url(../img/background_wall.jpg); background-size : cover; background-position:left bottom; background-repeat:no-repeat">
 
 		<!-- Request heavy object at first -->
-		<div style="display : none">
+		<div id="gallery" style="display : none" 	>
 			<!-- Have put the lighter backgrounds first, so that loading screen moves up from 0% not to discourage player.-->
 			<img src="../img/bck_blue_flags_shield.png" style="display : none"/>
 			<img src="../img/bck_flag_shield.png" style="display : none"/>
@@ -396,7 +395,6 @@ function displayStages(email)
 <!--	<div id='firstscr' class="firstscreen"> -->
 		<!-- TODO Either change content slider for different browsers or make iFrame size adjustments for different browsers in this content slider only -->
 		<div>
-		<div style="width: 50px; height: 300px; float:left; "></div>
 		<div id="showcase" class="showcase" style="margin: auto;">
 			<!-- Each child div in #showcase represents a slide -->
 			<!-- Each child div in #showcase represents a slide -->
@@ -416,7 +414,6 @@ function displayStages(email)
 			</div>
 		<!-- Each child div in #showcase represents a slide -->
 		</div>
-		<div style="width: 50px; height: 300px; float:right;"></div>
 		</div>
 		
 		<div class="showcase" sytle="position: relative;">

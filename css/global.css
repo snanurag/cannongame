@@ -29,7 +29,7 @@
 	}
 
 	span.icon{
-      background: url('../frontpage/images/Blue_signin_Long_focused_44dp_v3.png');
+      background: url('../img/Blue_signin_Long_focused_44dp_v3.png');
       display: inline-block;
       vertical-align: middle;
       width: 237px;
@@ -51,3 +51,4 @@
 	.googlesignin > div :hover{
 		cursor: hand;	
 	}
+	
