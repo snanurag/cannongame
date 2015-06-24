@@ -40,6 +40,94 @@ $(document).ready(function()
 {
 	$("img").load(function(event) {
 		imageCounter++;
+		
+		switch(imageCounter) {
+			case 22:
+				$('#icon').attr('src','../enter/stage_icons/bomb/bomb2.png');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">5%<font>');
+			break;
+			case 33:
+				$('#icon').attr('src','../enter/stage_icons/bomb/bomb3.png');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">9%<font>');
+			break;
+			case 44:
+				$('#icon').attr('src','../enter/stage_icons/bomb/bomb4.png');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">14%<font>');
+			break;
+			case 55:
+				$('#icon').attr('src','../enter/stage_icons/bomb/bomb5.png');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">18%<font>');
+			break;
+			case 66:
+				$('#icon').attr('src','../enter/stage_icons/bomb/bomb6.png');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">23%<font>');
+			break;
+			case 77:
+				$('#icon').attr('src','../enter/stage_icons/bomb/bomb7.png');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">27%<font>');
+			break;
+			case 88:
+				$('#icon').attr('src','../enter/stage_icons/bomb/bomb8.png');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">32%<font>');
+			break;
+			case 99:
+				$('#icon').attr('src','../enter/stage_icons/bomb/bomb9.png');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">36%<font>');
+			break;
+			case 110:
+				$('#icon').attr('src','../enter/stage_icons/bomb/bomb10.png');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">41%<font>');
+			break;
+			case 121:
+				$('#icon').attr('src','../enter/stage_icons/bomb/bomb11.png');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">45%<font>');
+			break;
+			case 132:
+				$('#icon').attr('src','../enter/stage_icons/bomb/bomb12.png');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">50%<font>');
+			break;
+			case 143:
+				$('#icon').attr('src','../enter/stage_icons/bomb/bomb13.png');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">54%<font>');
+			break;
+			case 154:
+				$('#icon').attr('src','../enter/stage_icons/bomb/bomb14.png');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">59%<font>');
+			break;
+			case 165:
+				$('#icon').attr('src','../enter/stage_icons/bomb/bomb15.png');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">63%<font>');
+			break;
+			case 176:
+				$('#icon').attr('src','../enter/stage_icons/bomb/bomb16.png');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">68%<font>');
+			break;
+			case 187:
+				$('#icon').attr('src','../enter/stage_icons/bomb/bomb17.png');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">72%<font>');
+			break;
+ 			case 198:
+				$('#icon').attr('src','../enter/stage_icons/bomb/bomb18.png');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">77%<font>');
+			break;
+			case 209:
+				$('#icon').attr('src','../enter/stage_icons/bomb/bomb19.png');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">81%<font>');
+			break;
+			case 220:
+				$('#icon').attr('src','../enter/stage_icons/bomb/bomb20.png');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">86%<font>');
+			break;
+			case 231:
+				$('#icon').attr('src','../enter/stage_icons/bomb/bomb21.png');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">91%<font>');
+			break;
+			case 242:
+				$('#icon').attr('src','../enter/stage_icons/bomb/bomb22.png');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">99%<font>');
+			break;
+		}		
+		
 		if(imageCounter > totalImages - giveBuffer)
 		{
 			window.open('../enter','_self');
@@ -52,9 +140,42 @@ $(document).ready(function()
 <body style="background-image:url(../img/loading_screen.png); background-size : cover; background-position:left bottom; background-repeat:no-repeat">
 
 
+		<table id="table1" style="width:100%; height:100%"><tr><td>
+
+		<div id="container" style="position: relative; text-align: center;">
+			<div id="progress_status" style="position:absolute; left:-10px; top:-7px; z-index:10; width:100%; height:100%"></br></br></br><font color="white" face="MisterEarl BT" size="6px">0%<font></div>
+			<div id="progress_icon" style="position:absolute; width:100%; height:100%">
+				<img id='icon' src="../enter/stage_icons/bomb/bomb1.png"/>
+			</div>
+		</div>
+			
+		</td></tr></table>
+		
 		<!-- Request heavy object at first -->
-		<div id="gallery" style="display : none" 	>
+		<div id="gallery" style="display : none">
 			<!-- Have put the lighter backgrounds first, so that loading screen moves up from 0% not to discourage player.-->
+			<img src="../enter/stage_icons/bomb/bomb1.png" style="display : none"/>
+			<img src="../enter/stage_icons/bomb/bomb2.png" style="display : none"/>
+			<img src="../enter/stage_icons/bomb/bomb3.png" style="display : none"/>
+			<img src="../enter/stage_icons/bomb/bomb4.png" style="display : none"/>
+			<img src="../enter/stage_icons/bomb/bomb5.png" style="display : none"/>
+			<img src="../enter/stage_icons/bomb/bomb6.png" style="display : none"/>
+			<img src="../enter/stage_icons/bomb/bomb7.png" style="display : none"/>
+			<img src="../enter/stage_icons/bomb/bomb8.png" style="display : none"/>
+			<img src="../enter/stage_icons/bomb/bomb9.png" style="display : none"/>
+			<img src="../enter/stage_icons/bomb/bomb10.png" style="display : none"/>
+			<img src="../enter/stage_icons/bomb/bomb11.png" style="display : none"/>
+			<img src="../enter/stage_icons/bomb/bomb12.png" style="display : none"/>
+			<img src="../enter/stage_icons/bomb/bomb13.png" style="display : none"/>
+			<img src="../enter/stage_icons/bomb/bomb14.png" style="display : none"/>
+			<img src="../enter/stage_icons/bomb/bomb15.png" style="display : none"/>
+			<img src="../enter/stage_icons/bomb/bomb16.png" style="display : none"/>
+			<img src="../enter/stage_icons/bomb/bomb17.png" style="display : none"/>
+			<img src="../enter/stage_icons/bomb/bomb18.png" style="display : none"/>
+			<img src="../enter/stage_icons/bomb/bomb19.png" style="display : none"/>
+			<img src="../enter/stage_icons/bomb/bomb20.png" style="display : none"/>
+			<img src="../enter/stage_icons/bomb/bomb21.png" style="display : none"/>
+			<img src="../enter/stage_icons/bomb/bomb22.png" style="display : none"/>
 			<img src="../img/bck_blue_flags_shield.png" style="display : none"/>
 			<img src="../img/bck_flag_shield.png" style="display : none"/>
 			<img src="../img/bck_shield_torches.png" style="display : none"/>
@@ -225,28 +346,6 @@ $(document).ready(function()
 			<img src="../enter/flag_imgs/tracer/flag14.png" style="display : none"/>
 			<img src="../enter/flag_imgs/tracer/flag15.png" style="display : none"/>
 			<img src="../enter/flag_imgs/tracer/flag16.png" style="display : none"/>
-			<img src="../enter/stage_icons/bomb/bomb1.png" style="display : none"/>
-			<img src="../enter/stage_icons/bomb/bomb2.png" style="display : none"/>
-			<img src="../enter/stage_icons/bomb/bomb3.png" style="display : none"/>
-			<img src="../enter/stage_icons/bomb/bomb4.png" style="display : none"/>
-			<img src="../enter/stage_icons/bomb/bomb5.png" style="display : none"/>
-			<img src="../enter/stage_icons/bomb/bomb6.png" style="display : none"/>
-			<img src="../enter/stage_icons/bomb/bomb7.png" style="display : none"/>
-			<img src="../enter/stage_icons/bomb/bomb8.png" style="display : none"/>
-			<img src="../enter/stage_icons/bomb/bomb9.png" style="display : none"/>
-			<img src="../enter/stage_icons/bomb/bomb10.png" style="display : none"/>
-			<img src="../enter/stage_icons/bomb/bomb11.png" style="display : none"/>
-			<img src="../enter/stage_icons/bomb/bomb12.png" style="display : none"/>
-			<img src="../enter/stage_icons/bomb/bomb13.png" style="display : none"/>
-			<img src="../enter/stage_icons/bomb/bomb14.png" style="display : none"/>
-			<img src="../enter/stage_icons/bomb/bomb15.png" style="display : none"/>
-			<img src="../enter/stage_icons/bomb/bomb16.png" style="display : none"/>
-			<img src="../enter/stage_icons/bomb/bomb17.png" style="display : none"/>
-			<img src="../enter/stage_icons/bomb/bomb18.png" style="display : none"/>
-			<img src="../enter/stage_icons/bomb/bomb19.png" style="display : none"/>
-			<img src="../enter/stage_icons/bomb/bomb20.png" style="display : none"/>
-			<img src="../enter/stage_icons/bomb/bomb21.png" style="display : none"/>
-			<img src="../enter/stage_icons/bomb/bomb22.png" style="display : none"/>
 			<img src="../enter/stage_icons/1.png" style="display : none"/>
 			<img src="../enter/stage_icons/2.png" style="display : none"/>
 			<img src="../enter/stage_icons/3.png" style="display : none"/>
