@@ -19,8 +19,8 @@ function startBombBurningDeamon(stage, startingStage, lastStage)
 
 function setStageIconDisabled(x, y)
 {
-	var imageW = 50;
-	var imageH = 37-(50-37);
+	var imageW = 50 * window.devicePixelRatio;
+	var imageH = (37-(50-37)) * window.devicePixelRatio;
 	var imageBomb = new Bitmap(new BitmapData('stage_icons/bomb_disabled.png'));
 	imageBomb.x =  Math.floor(x - imageW);
 	imageBomb.y =  Math.floor(y - imageH);
@@ -32,8 +32,8 @@ function setStageIcon(image, x, y)
 {
 
 	//Adding bomb in background
-	var imageW = 50;
-	var imageH = 50;
+	var imageW = 50 * window.devicePixelRatio;
+	var imageH = 50 * window.devicePixelRatio;
 	var imageBomb = new Bitmap(new BitmapData('stage_icons/bomb/bomb1.png'));
 	imageBomb.x =  Math.floor(x - imageW);
 	imageBomb.y =  Math.floor(y - imageH);

@@ -15,8 +15,8 @@
 	<script type="text/javascript">
 		var stage, cur = null;
 //		alert(Math.floor(window.innerWidth));
-		var w = window.innerWidth;
-		var h = window.innerHeight;
+		var w = window.innerWidth * window.devicePixelRatio;
+		var h = window.innerHeight * window.devicePixelRatio;
 		
 		function Start()
 		{	
@@ -25,6 +25,8 @@
 			stage.addEventListener(Event.ENTER_FRAME, onEnterFrame);
 
 			var bg = new Bitmap( new BitmapData("images/bck_fp.png") );
+			bg.scaleX = window.devicePixelRatio;
+			bg.scaleY = window.devicePixelRatio;
 			stage.addChild(bg);
 			
 			var clearedStages = JSON.parse($.cookie("clearedstages"));

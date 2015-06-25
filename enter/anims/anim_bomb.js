@@ -1,9 +1,9 @@
 var count_tower = 22;
-var bombWidth = 50;
-var bombHeight = 50;
+var bombWidth = 50 * window.devicePixelRatio;
+var bombHeight = 50 * window.devicePixelRatio;
 var FRAME_RATE_BOMB = 50;
-var w = window.innerWidth;
-var h = window.innerHeight;
+var w = window.innerWidth * window.devicePixelRatio;
+var h = window.innerHeight * window.devicePixelRatio;
 
 var arr_bomb = new Array();
 
