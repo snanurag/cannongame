@@ -1,11 +1,3 @@
-var count_sound = 16;
-var soundWidth = 51;
-var soundHeight = 68;
-var soundHeightShift = 18;
-var FRAME_RATE_SOUND = 100;
-var w = window.innerWidth;
-var h = window.innerHeight;
-
 var arr_sound = new Array();
 
 /*
@@ -48,21 +40,22 @@ function animSound(counter, stage)
 {
 	// This ensures that this animation is run only once on contact.
 
-		if(counter < count_sound)
+		if(counter < count_flag)
 		{
 			if(inFrame)
 			{
-				arr_sound[counter].x = Math.floor(3*w/8 - soundWidth);
-				arr_sound[counter].y = Math.floor(h/2- soundHeight - soundHeightShift);
+				arr_sound[counter].x = Math.floor(3*w/8 - flagWidth);
+				arr_sound[counter].y = Math.floor(h/2- flagHeight - flagHeightShift);
 
 				stage.removeChild(arr_sound[counter-1]);
 				arr_sound[counter].addEventListener(MouseEvent.MOUSE_DOWN, eval(soundlistenerp));
-
+				arr_sound[counter].scaleX = window.devicePixelRatio;
+				arr_sound[counter].scaleY = window.devicePixelRatio;
 				arr_sound[counter].buttonMode = true;
 				stage.addChild(arr_sound[counter]);
 				counter++;
 			}
-			setTimeout(animSound, FRAME_RATE_SOUND, counter, stage); 
+			setTimeout(animSound, FRAME_RATE_FLAG, counter, stage); 
 		}
 		else
 		{
@@ -70,23 +63,23 @@ function animSound(counter, stage)
 
 			if(getMetaTag('sound').content == 'on')
 			{
-				arr_sound[4].x = Math.floor(3*w/8 - soundWidth);
-				arr_sound[4].y = Math.floor(h/2- soundHeight - soundHeightShift);
+				arr_sound[4].x = Math.floor(3*w/8 - flagWidth);
+				arr_sound[4].y = Math.floor(h/2- flagHeight - flagHeightShift);
 			
 				arr_sound[4].buttonMode = true;
 				arr_sound[4].addEventListener(MouseEvent.MOUSE_DOWN, eval(soundlistenerp));
 				stage.addChild(arr_sound[4]);
-				setTimeout(animSound, FRAME_RATE_SOUND, 5, stage); 
+				setTimeout(animSound, FRAME_RATE_FLAG, 5, stage); 
 			}
 			else
 			{
-				arr_sound[3].x = Math.floor(3*w/8 - soundWidth);
-				arr_sound[3].y = Math.floor(h/2- soundHeight - soundHeightShift);
+				arr_sound[3].x = Math.floor(3*w/8 - flagWidth);
+				arr_sound[3].y = Math.floor(h/2- flagHeight - flagHeightShift);
 			
 				arr_sound[3].buttonMode = true;
 				arr_sound[3].addEventListener(MouseEvent.MOUSE_DOWN, eval(soundlistenerp));
 				stage.addChild(arr_sound[3]);
-				setTimeout(stopSound, FRAME_RATE_SOUND, 2, stage); 
+				setTimeout(stopSound, FRAME_RATE_FLAG, 2, stage); 
 			}
 		}
 }
@@ -97,8 +90,10 @@ function stopSound(counter, stage)
 		{
 			stage.removeChild(arr_sound[counter+1]);
 
-			arr_sound[counter].x = Math.floor(3*w/8 - soundWidth);
-			arr_sound[counter].y = Math.floor(h/2 - soundHeight - soundHeightShift);
+			arr_sound[counter].x = Math.floor(3*w/8 - flagWidth);
+			arr_sound[counter].y = Math.floor(h/2 - flagHeight - flagHeightShift);
+			arr_sound[counter].scaleX = window.devicePixelRatio;
+			arr_sound[counter].scaleY = window.devicePixelRatio;
 
 			arr_sound[counter].buttonMode = true;
 			if(counter > 0)
@@ -113,7 +108,7 @@ function stopSound(counter, stage)
 			stage.addChild(arr_sound[counter]);
 			
 			counter--;
-			setTimeout(stopSound, FRAME_RATE_SOUND, counter, stage); 
+			setTimeout(stopSound, FRAME_RATE_FLAG, counter, stage); 
 		}
 
 }

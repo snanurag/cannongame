@@ -1,11 +1,3 @@
-var count_tracer = 16;
-var tracerWidth = 51;
-var tracerHeight = 68;
-var tracerHeightShift = 18;
-var FRAME_RATE_TRACER = 100;
-var w = window.innerWidth;
-var h = window.innerHeight;
-
 var arr_tracer = new Array();
 
 	var tracerlistener = 'onMDTracer';
@@ -36,21 +28,22 @@ function animTracer(counter, stage)
 {
 	// This ensures that this animation is run only once on contact.
 
-		if(counter < count_tracer)
+		if(counter < count_flag)
 		{
 			if(inFrame)
 			{
-				arr_tracer[counter].x = Math.floor(5*w/8 - tracerWidth);
-				arr_tracer[counter].y = Math.floor(h/2- tracerHeight - tracerHeightShift);
+				arr_tracer[counter].x = Math.floor(5*w/8 - flagWidth);
+				arr_tracer[counter].y = Math.floor(h/2- flagHeight - flagHeightShift);
 
 				stage.removeChild(arr_tracer[counter-1]);
 				arr_tracer[counter].addEventListener(MouseEvent.MOUSE_DOWN, eval(tracerlistenerp));
-
+				arr_tracer[counter].scaleX = window.devicePixelRatio;
+				arr_tracer[counter].scaleY = window.devicePixelRatio;
 				arr_tracer[counter].buttonMode = true;
 				stage.addChild(arr_tracer[counter]);
 				counter++;
 			}
-			setTimeout(animTracer, FRAME_RATE_TRACER, counter, stage); 
+			setTimeout(animTracer, FRAME_RATE_FLAG, counter, stage); 
 		}
 		else
 		{
@@ -58,23 +51,23 @@ function animTracer(counter, stage)
 
 			if(getMetaTag('tracer').content == 'on')
 			{
-				arr_tracer[4].x = Math.floor(5*w/8 - tracerWidth);
-				arr_tracer[4].y = Math.floor(h/2- tracerHeight - tracerHeightShift);
+				arr_tracer[4].x = Math.floor(5*w/8 - flagWidth);
+				arr_tracer[4].y = Math.floor(h/2- flagHeight - flagHeightShift);
 			
 				arr_tracer[4].buttonMode = true;
 				arr_tracer[4].addEventListener(MouseEvent.MOUSE_DOWN, eval(tracerlistenerp));
 				stage.addChild(arr_tracer[4]);
-				setTimeout(animTracer, FRAME_RATE_TRACER, 5, stage); 
+				setTimeout(animTracer, FRAME_RATE_FLAG, 5, stage); 
 			}
 			else
 			{
-				arr_tracer[3].x = Math.floor(5*w/8 - tracerWidth);
-				arr_tracer[3].y = Math.floor(h/2- tracerHeight - tracerHeightShift);
+				arr_tracer[3].x = Math.floor(5*w/8 - flagWidth);
+				arr_tracer[3].y = Math.floor(h/2- flagHeight - flagHeightShift);
 			
 				arr_tracer[3].buttonMode = true;
 				arr_tracer[3].addEventListener(MouseEvent.MOUSE_DOWN, eval(tracerlistenerp));
 				stage.addChild(arr_tracer[3]);
-				setTimeout(stopTracer, FRAME_RATE_TRACER, 2, stage); 
+				setTimeout(stopTracer, FRAME_RATE_FLAG, 2, stage); 
 			}
 		}
 }
@@ -85,8 +78,10 @@ function stopTracer(counter, stage)
 		{
 			stage.removeChild(arr_tracer[counter+1]);
 
-			arr_tracer[counter].x = Math.floor(5*w/8 - tracerWidth);
-			arr_tracer[counter].y = Math.floor(h/2 - tracerHeight - tracerHeightShift);
+			arr_tracer[counter].x = Math.floor(5*w/8 - flagWidth);
+			arr_tracer[counter].y = Math.floor(h/2 - flagHeight - flagHeightShift);
+			arr_tracer[counter].scaleX = window.devicePixelRatio;
+			arr_tracer[counter].scaleY = window.devicePixelRatio;
 
 			arr_tracer[counter].buttonMode = true;
 			if(counter > 0)
@@ -101,7 +96,7 @@ function stopTracer(counter, stage)
 			stage.addChild(arr_tracer[counter]);
 			
 			counter--;
-			setTimeout(stopTracer, FRAME_RATE_TRACER, counter, stage); 
+			setTimeout(stopTracer, FRAME_RATE_FLAG, counter, stage); 
 		}
 
 }
@@ -109,8 +104,10 @@ function stopTracer(counter, stage)
 function startWithTracerStop(stage)
 {
 
-	arr_tracer[0].x = Math.floor(5*w/8 - tracerWidth);
-	arr_tracer[0].y = Math.floor(h/2 - tracerHeight - tracerHeightShift);
+	arr_tracer[0].x = Math.floor(5*w/8 - flagWidth);
+	arr_tracer[0].y = Math.floor(h/2 - flagHeight - flagHeightShift);
+	arr_tracer[0].scaleX = window.devicePixelRatio;
+	arr_tracer[0].scaleY = window.devicePixelRatio;
 
 	arr_tracer[0].buttonMode = true;
 	arr_tracer[0].addEventListener(MouseEvent.MOUSE_DOWN, eval(tracerlistener));

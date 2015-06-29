@@ -22,6 +22,8 @@ function setStageIconDisabled(x, y)
 	var imageW = 50 * window.devicePixelRatio;
 	var imageH = (37-(50-37)) * window.devicePixelRatio;
 	var imageBomb = new Bitmap(new BitmapData('stage_icons/bomb_disabled.png'));
+	imageBomb.scaleX = window.devicePixelRatio;
+	imageBomb.scaleY = window.devicePixelRatio;
 	imageBomb.x =  Math.floor(x - imageW);
 	imageBomb.y =  Math.floor(y - imageH);
 	stage.addChild(imageBomb);
@@ -35,6 +37,8 @@ function setStageIcon(image, x, y)
 	var imageW = 50 * window.devicePixelRatio;
 	var imageH = 50 * window.devicePixelRatio;
 	var imageBomb = new Bitmap(new BitmapData('stage_icons/bomb/bomb1.png'));
+	imageBomb.scaleX = window.devicePixelRatio;
+	imageBomb.scaleY = window.devicePixelRatio;
 	imageBomb.x =  Math.floor(x - imageW);
 	imageBomb.y =  Math.floor(y - imageH);
 	stage.addChild(imageBomb);
@@ -42,6 +46,8 @@ function setStageIcon(image, x, y)
 	var bd = new BitmapData(image);
 
 	var b = new Bitmap(bd);
+	b.scaleX = window.devicePixelRatio;
+	b.scaleY = window.devicePixelRatio;
 	b.x = Math.floor(x - imageW);
 	b.y = Math.floor(y - imageH);
 	b.buttonMode = true;
@@ -59,6 +65,7 @@ function setStageIcon(image, x, y)
 
 function onMD ()
 { 
+		window.parent.document.body.style.backgroundImage = 'url(../img/loading_stage.jpg)';
 
 	//TODO Have to enable it later and has to verify whether it will work in mozilla and opera too or not?
 /*			if(window.parent.outerHeight != window.parent.screen.availHeight || window.parent.outerWidth != window.parent.screen.availWidth)
@@ -83,7 +90,6 @@ function onMD ()
 
 	// Removing contents of parent document.	
 	$('div', window.parent.document).remove();
-	
 	return ifrm;
 }
 

@@ -1,11 +1,3 @@
-var count_music = 16;
-var musicWidth = 51;
-var musicHeight = 68;
-var musicHeightShift = 18;
-var FRAME_RATE_MUSIC = 100;
-var w = window.innerWidth;
-var h = window.innerHeight;
-
 var arr_music = new Array();
 
 	var musiclistener = 'onMDMusic';
@@ -39,22 +31,24 @@ function animMusic(counter, stage)
 {
 	// This ensures that this animation is run only once on contact.
 
-		if(counter < count_music)
+		if(counter < count_flag)
 		{
 			//Because of this block, flag will move only when in frame. Otherwise it will stay in loop but no removal and addition in stage.
 			if(inFrame)
 			{
-				arr_music[counter].x = Math.floor(w/8 - musicWidth);
-				arr_music[counter].y = Math.floor(h/2- musicHeight - musicHeightShift);
+				arr_music[counter].x = Math.floor(w/8 - flagWidth);
+				arr_music[counter].y = Math.floor(h/2- flagHeight - flagHeightShift);
 
 				stage.removeChild(arr_music[counter-1]);
 				arr_music[counter].addEventListener(MouseEvent.MOUSE_DOWN, eval(musiclistenerp));
 
 				arr_music[counter].buttonMode = true;
+				arr_music[counter].scaleX = window.devicePixelRatio;
+				arr_music[counter].scaleY = window.devicePixelRatio;
 				stage.addChild(arr_music[counter]);
 				counter++;
 			}
-			setTimeout(animMusic, FRAME_RATE_MUSIC, counter, stage); 
+			setTimeout(animMusic, FRAME_RATE_FLAG, counter, stage); 
 		}
 		else
 		{
@@ -62,23 +56,23 @@ function animMusic(counter, stage)
 
 			if(getMetaTag('music').content == 'on')
 			{
-				arr_music[4].x = Math.floor(w/8 - musicWidth);
-				arr_music[4].y = Math.floor(h/2- musicHeight - musicHeightShift);
+				arr_music[4].x = Math.floor(w/8 - flagWidth);
+				arr_music[4].y = Math.floor(h/2- flagHeight - flagHeightShift);
 			
 				arr_music[4].buttonMode = true;
 				arr_music[4].addEventListener(MouseEvent.MOUSE_DOWN, eval(musiclistenerp));
 				stage.addChild(arr_music[4]);
-				setTimeout(animMusic, FRAME_RATE_MUSIC, 5, stage); 
+				setTimeout(animMusic, FRAME_RATE_FLAG, 5, stage); 
 			}
 			else
 			{
-				arr_music[3].x = Math.floor(w/8 - musicWidth);
-				arr_music[3].y = Math.floor(h/2- musicHeight - musicHeightShift);
+				arr_music[3].x = Math.floor(w/8 - flagWidth);
+				arr_music[3].y = Math.floor(h/2- flagHeight - flagHeightShift);
 			
 				arr_music[3].buttonMode = true;
 				arr_music[3].addEventListener(MouseEvent.MOUSE_DOWN, eval(musiclistenerp));
 				stage.addChild(arr_music[3]);
-				setTimeout(stopMusic, FRAME_RATE_MUSIC, 2, stage); 
+				setTimeout(stopMusic, FRAME_RATE_FLAG, 2, stage); 
 			}
 		}
 }
@@ -89,8 +83,10 @@ function stopMusic(counter, stage)
 		{
 			stage.removeChild(arr_music[counter+1]);
 
-			arr_music[counter].x = Math.floor(w/8 - musicWidth);
-			arr_music[counter].y = Math.floor(h/2 - musicHeight - musicHeightShift);
+			arr_music[counter].x = Math.floor(w/8 - flagWidth);
+			arr_music[counter].y = Math.floor(h/2 - flagHeight - flagHeightShift);
+			arr_music[counter].scaleX = window.devicePixelRatio;
+			arr_music[counter].scaleY = window.devicePixelRatio;
 
 			arr_music[counter].buttonMode = true;
 			if(counter > 0)
@@ -105,7 +101,7 @@ function stopMusic(counter, stage)
 			stage.addChild(arr_music[counter]);
 			
 			counter--;
-			setTimeout(stopMusic, FRAME_RATE_MUSIC, counter, stage); 
+			setTimeout(stopMusic, FRAME_RATE_FLAG, counter, stage); 
 		}
 
 }

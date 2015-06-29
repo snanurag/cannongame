@@ -1,14 +1,6 @@
-var count_shop = 16;
-var shopWidth = 51;
-var shopHeight = 68;
-var shopHeightShift = 18;
-var FRAME_RATE_SHOP = 100;
-var w = window.innerWidth;
-var h = window.innerHeight;
-
 var arr_shop = new Array();
 
-	var shoplistener = 'onMDShop';
+var shoplistener = 'onMDShop';
 	
 function initializeShopAnim()
 {
@@ -35,32 +27,34 @@ function animShop(counter, stage)
 {
 	// This ensures that this animation is run only once on contact.
 
-		if(counter < count_shop)
+		if(counter < count_flag)
 		{
 			if(inFrame)
 			{
-				arr_shop[counter].x = Math.floor(7*w/8 - shopWidth);
-				arr_shop[counter].y = Math.floor(h/2- shopHeight - shopHeightShift);
+				arr_shop[counter].x = Math.floor(7*w/8 - flagWidth);
+				arr_shop[counter].y = Math.floor(h/2- flagHeight - flagHeightShift);
 
 				stage.removeChild(arr_shop[counter-1]);
 				arr_shop[counter].addEventListener(MouseEvent.MOUSE_DOWN, eval(shoplistener));
 
 				arr_shop[counter].buttonMode = true;
+				arr_shop[counter].scaleX = window.devicePixelRatio;
+				arr_shop[counter].scaleY = window.devicePixelRatio;
 				stage.addChild(arr_shop[counter]);
 				counter++;
 			}
-			setTimeout(animShop, FRAME_RATE_SHOP, counter, stage); 
+			setTimeout(animShop, FRAME_RATE_FLAG, counter, stage); 
 		}
 		else
 		{
 			stage.removeChild(arr_shop[counter-1]);
 
-			arr_shop[4].x = Math.floor(7*w/8 - shopWidth);
-			arr_shop[4].y = Math.floor(h/2- shopHeight - shopHeightShift);
+			arr_shop[4].x = Math.floor(7*w/8 - flagWidth);
+			arr_shop[4].y = Math.floor(h/2- flagHeight - flagHeightShift);
 		
 			arr_shop[4].buttonMode = true;
 			arr_shop[4].addEventListener(MouseEvent.MOUSE_DOWN, eval(shoplistener));
 			stage.addChild(arr_shop[4]);
-			setTimeout(animShop, FRAME_RATE_SHOP, 5, stage); 
+			setTimeout(animShop, FRAME_RATE_FLAG, 5, stage); 
 		}
 }

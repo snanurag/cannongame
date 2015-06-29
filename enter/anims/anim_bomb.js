@@ -55,6 +55,9 @@ function animBomb(counter, stage, stage_no)
 			arr_bomb[counter].y = Math.floor(stagesY[stage_no - 1]- bombHeight);
 
 			stage.removeChild(arr_bomb[counter-1]);
+			
+			arr_bomb[counter].scaleX = window.devicePixelRatio;
+			arr_bomb[counter].scaleY = window.devicePixelRatio;
 
 			stage.addChild(arr_bomb[counter]);
 			counter++;
@@ -75,6 +78,8 @@ function animBomb(counter, stage, stage_no)
 		arr_bomb[0].x = Math.floor(stagesX[stage_no - 1] - bombWidth);
 		arr_bomb[0].y = Math.floor(stagesY[stage_no - 1]- bombHeight);
 		
+		arr_bomb[0].scaleX = window.devicePixelRatio;
+		arr_bomb[0].scaleY = window.devicePixelRatio;
 		stage.addChild(arr_bomb[0]);
 	}
 		
@@ -82,7 +87,8 @@ function animBomb(counter, stage, stage_no)
 	stage_no_images[stage_no -1].y = Math.floor(stagesY[stage_no - 1]- bombHeight);
 	stage_no_images[stage_no -1].addEventListener(MouseEvent.MOUSE_DOWN, eval(listeners[stage_no-1]));
 	stage_no_images[stage_no -1].buttonMode = true;
-
+	stage_no_images[stage_no -1].scaleX = window.devicePixelRatio;
+	stage_no_images[stage_no -1].scaleY = window.devicePixelRatio;
 	stage.addChild(stage_no_images[stage_no -1]);
 		
 }

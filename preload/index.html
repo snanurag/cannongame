@@ -41,30 +41,42 @@ $(document).ready(function()
 	$("img").load(function(event) {
 		imageCounter++;
 		
+		//Can fix loading bomb width this way.	
+/*		$('#icon').width(100 / window.devicePixelRatio);
+		$('#icon').height(100 / window.devicePixelRatio);
+		$('#progress_status').width(100 / window.devicePixelRatio);
+		$('#progress_status').height(100 / window.devicePixelRatio);
+
+		var t = -7 / window.devicePixelRatio;
+		var l = -10 / window.devicePixelRatio;
+		var s = 6 / window.devicePixelRatio;
+		$('#progress_status').css({top: t, left: l, position:'absolute'});
+		$('#progress_status').css('font-size', s+"px"); 
+*/		
 		switch(imageCounter) {
 			case 22:
 				$('#icon').attr('src','../enter/stage_icons/bomb/bomb2.png');
-				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">5%<font>');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">5%</font>');
 			break;
 			case 33:
 				$('#icon').attr('src','../enter/stage_icons/bomb/bomb3.png');
-				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">9%<font>');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">9%</font>');
 			break;
 			case 44:
 				$('#icon').attr('src','../enter/stage_icons/bomb/bomb4.png');
-				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">14%<font>');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">14%</font>');
 			break;
 			case 55:
 				$('#icon').attr('src','../enter/stage_icons/bomb/bomb5.png');
-				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">18%<font>');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">18%</font>');
 			break;
 			case 66:
 				$('#icon').attr('src','../enter/stage_icons/bomb/bomb6.png');
-				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">23%<font>');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">23%</font>');
 			break;
 			case 77:
 				$('#icon').attr('src','../enter/stage_icons/bomb/bomb7.png');
-				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">27%<font>');
+				$('#progress_status').html('</br></br></br><font color="white" face="MisterEarl BT" size="6px">27%</font>');
 			break;
 			case 88:
 				$('#icon').attr('src','../enter/stage_icons/bomb/bomb8.png');
@@ -137,13 +149,13 @@ $(document).ready(function()
 
 </script>
 </head>
-<body style="background-image:url(../img/loading_screen.png); background-size : cover; background-position:left bottom; background-repeat:no-repeat">
+<body style="background-image:url(../img/loading_page.jpg); background-size : cover; background-position:left bottom; background-repeat:no-repeat">
 
 
 		<table id="table1" style="width:100%; height:100%"><tr><td>
 
 		<div id="container" style="position: relative; text-align: center;">
-			<div id="progress_status" style="position:absolute; left:-10px; top:-7px; z-index:10; width:100%; height:100%"></br></br></br><font color="white" face="MisterEarl BT" size="6px">0%<font></div>
+			<div id="progress_status" style="position:absolute; top:-7; left:-10; z-index:10; width:100%; height:100%"></br></br></br><font color="white" face="MisterEarl BT" size="6px">0%<font></div>
 			<div id="progress_icon" style="position:absolute; width:100%; height:100%">
 				<img id='icon' src="../enter/stage_icons/bomb/bomb1.png"/>
 			</div>
@@ -182,6 +194,7 @@ $(document).ready(function()
 			<img src="../img/bck_shields.png" style="display : none"/>
 			<img src="../img/background_wall.jpg" style="display : none"/>
 			<img src="../img/credit_wall.jpg" style="display : none"/>
+			<img src="../img/loading_stage.jpg" style="display : none"/>
 			<img src="../img/cannon_1.png" style="display : none"/>
 			<img src="../img/cannon_2.png" style="display : none"/>
 			<img src="../img/castle/castle1.png" style="display : none"/>
@@ -401,7 +414,6 @@ $(document).ready(function()
 			<img src="../img/empty_star.png" style="display : none"/>
 			<img src="../img/golden_star.png" style="display : none"/>
 
-			
 		</div>
 </body>
 
