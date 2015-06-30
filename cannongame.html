@@ -215,12 +215,14 @@
 					balls[i].ApplyImpulse(impulse, balls[i].GetWorldCenter());
 
 					//Play sound
-					stopBackgroundSound();
-					if(i == 0)
-						playCannon1Sound();
-					else
-						playCannon2Sound();
-					
+					if(sound == 'on')
+					{
+						stopBackgroundSound();
+						if(i == 0)
+							playCannon1Sound();
+						else
+							playCannon2Sound();
+					}
 				}
 			
 				//Update the final totalBodies count.
@@ -337,12 +339,12 @@
 						}
 						if((userDataB.previousColloider == undefined || userDataB.previousColloider != userDataA.name) && (userDataA.name =='building1' || userDataA.name =='building2' || userDataA.name =='building3'))
 						{
-							playCastle();
+							playSound('ballvsbuilding');
 							userDataB.previousColloider = userDataA.name;
 						}
 						else if (userDataB.previousColloider == undefined || userDataB.previousColloider != userDataA.name)
 						{
-							playWall();
+							playSound('ballvswall');
 							userDataB.previousColloider = userDataA.name;
 						}
 					}
@@ -366,12 +368,12 @@
 						}
 						if((userDataA.previousColloider == undefined || userDataA.previousColloider != userDataB.name) && (userDataB.name =='building1' || userDataB.name =='building2' || userDataB.name =='building3'))
 						{
-							playCastle();
+							playSound('ballvsbuilding');
 							userDataB.previousColloider = userDataA.name;
 						}
 						else if (userDataA.previousColloider == undefined || userDataA.previousColloider != userDataB.name)
 						{
-							playWall();
+							playSound('ballvswall');
 							userDataA.previousColloider = userDataB.name;
 						}
 					}
