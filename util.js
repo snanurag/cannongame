@@ -302,3 +302,31 @@
 	{
 		popup.classList.add('easeout');
 	}
+	
+	function playCannonCollision(a, b)
+	{
+		if(a == null)
+		{
+			playWall();
+			b.previousColloider = null;
+		}
+		else if(b == null)
+		{
+			playWall();
+			a.previousColloider = null;
+		}
+		else if(b.previousColloider == undefined)
+		{
+			b.previousColloider = a.name;
+		}
+		else if(a.name =='building1' || a.name =='building2' || a.name =='building3')
+		{
+			playCastle();
+			b.previousColloider = a.name;
+		}
+		else if(b.previousColloider != a.name)
+		{
+			playWall();
+			b.previousColloider = a.name;
+		}
+	}
