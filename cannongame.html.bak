@@ -292,112 +292,89 @@
 	{
 		var userDataA = contact.GetFixtureA().GetUserData();
 		var userDataB = contact.GetFixtureB().GetUserData();
+				console.log('A '+userDataA+' B '+userDataB);
 
 		var bodyA = contact.GetFixtureA().m_body;
 		var bodyB = contact.GetFixtureB().m_body;
-		if(bodies.indexOf(bodyA) != -1 && bodies.indexOf(bodyB) != -1 )
+		if(!endDetected)
 		{
-			if(!endDetected)
+	
+/*
+			//Cannon weld joint code
+			if(userDataA != undefined && userDataA != null && userDataA.name == "dynamic_cannon")
 			{
-		
-	/*
-				//Cannon weld joint code
-				if(userDataA != undefined && userDataA != null && userDataA.name == "dynamic_cannon")
+				if(userDataA.originalX < stage.stageWidth/(2*SCALE))
+					resetCannonA = true;
+				else
+					resetCannonB = true;
+			}
+			else if(userDataB != undefined && userDataB != null && userDataB.name == "dynamic_cannon")
+			{
+				if(userDataB.originalX < stage.stageWidth/(2*SCALE))
+					resetCannonA = true;
+				else
+					resetCannonB = true;
+			}
+*/
+			if(userDataA != undefined && userDataA != null && userDataB != undefined && userDataB != null)
+			{
+				var nameA = userDataA.name;
+				var nameB = userDataB.name;
+				if(userDataB.name == "cannon ball")
 				{
-					if(userDataA.originalX < stage.stageWidth/(2*SCALE))
-						resetCannonA = true;
-					else
-						resetCannonB = true;
-				}
-				else if(userDataB != undefined && userDataB != null && userDataB.name == "dynamic_cannon")
-				{
-					if(userDataB.originalX < stage.stageWidth/(2*SCALE))
-						resetCannonA = true;
-					else
-						resetCannonB = true;
-				}
-	*/
-				
-				if(userDataA != undefined || userDataA != null)
-				{
-					var nameA = userDataA.name;
-					if(userDataB != null && userDataB.name == "cannon ball")
+					if(nameA == "building1")
 					{
-						if(nameA == "building1")
-						{
-							animBuilding1(userDataA.originalX, userDataA.originalY, 0, userDataA.actor, bodyA);
-						}
-						else if(nameA == "building2")
-						{
-							animBuilding2(userDataA.originalX, userDataA.originalY, 0, userDataA.actor, bodyA);
-						}
-						else if(nameA == "building3")
-						{
-							animBuilding3(userDataA.originalX, userDataA.originalY, 0, userDataA.actor, bodyA);
-						}
-						if((userDataB.previousColloider == undefined || userDataB.previousColloider != userDataA.name) && (userDataA.name =='building1' || userDataA.name =='building2' || userDataA.name =='building3'))
-						{
-							playSound('ballvsbuilding');
-							userDataB.previousColloider = userDataA.name;
-						}
-						else if (userDataB.previousColloider == undefined || userDataB.previousColloider != userDataA.name)
-						{
-							playSound('ballvswall');
-							userDataB.previousColloider = userDataA.name;
-						}
+						animBuilding1(userDataA.originalX, userDataA.originalY, 0, userDataA.actor, bodyA);
 					}
-				}
-				if(userDataB != undefined || userDataB != null)
-				{
-					var nameB = userDataB.name;
-					if(userDataA != null && userDataA.name == "cannon ball")
+					else if(nameA == "building2")
 					{
-						if(nameB == "building1")
-						{
-							animBuilding1(userDataB.originalX, userDataB.originalY, 0, userDataB.actor, bodyB);
-						}
-						else if(nameB == "building2")
-						{
-							animBuilding2(userDataB.originalX, userDataB.originalY, 0, userDataB.actor, bodyB);
-						}
-						else if(nameB == "building3")
-						{
-							animBuilding3(userDataB.originalX, userDataB.originalY, 0, userDataB.actor, bodyB);
-						}
-						if((userDataA.previousColloider == undefined || userDataA.previousColloider != userDataB.name) && (userDataB.name =='building1' || userDataB.name =='building2' || userDataB.name =='building3'))
-						{
-							playSound('ballvsbuilding');
-							userDataB.previousColloider = userDataA.name;
-						}
-						else if (userDataA.previousColloider == undefined || userDataA.previousColloider != userDataB.name)
-						{
-							playSound('ballvswall');
-							userDataA.previousColloider = userDataB.name;
-						}
+						animBuilding2(userDataA.originalX, userDataA.originalY, 0, userDataA.actor, bodyA);
 					}
+					else if(nameA == "building3")
+					{
+						animBuilding3(userDataA.originalX, userDataA.originalY, 0, userDataA.actor, bodyA);
+					}
+					playCannonCollision(userDataA, userDataB);
 				}
-			}	
-		}
-		else
-		{
-		
-			if(bodyA != undefined && bodyA != null && bodies.indexOf(bodyA) == -1)
-				world.DestroyBody(bodyA);
-			else if(bodyB != undefined && bodyB != null && bodies.indexOf(bodyB) == -1)
-				world.DestroyBody(bodyB);
+				if(userDataA.name == "cannon ball")
+				{
+					if(nameB == "building1")
+					{
+						animBuilding1(userDataB.originalX, userDataB.originalY, 0, userDataB.actor, bodyB);
+					}
+					else if(nameB == "building2")
+					{
+						animBuilding2(userDataB.originalX, userDataB.originalY, 0, userDataB.actor, bodyB);
+					}
+					else if(nameB == "building3")
+					{
+						animBuilding3(userDataB.originalX, userDataB.originalY, 0, userDataB.actor, bodyB);
+					}
+					playCannonCollision(userDataB, userDataA);
+				}
+			}
+			else if(userDataA == null || userDataB == null)
+			{
+				playCannonCollision(userDataA, userDataB);
+			}
 			
-		}
+		}	
+	
+		if(bodies.indexOf(bodyA) == -1)
+			world.DestroyBody(bodyA);
+		else if(bodies.indexOf(bodyB) == -1)
+			world.DestroyBody(bodyB);
+			
 	}
 		
 		
      </script>
 </head>
-<body onload="Start();" style="background-image:url(img/loading_stage.jpg); background-size : cover; background-position:left bottom; background-repeat:no-repeat"">
+<body onload="Start();">
 <canvas id="c" width="960" height="400"></canvas>
 <div id="gameoverPopup" class="modalDialog" >
 </div>
 <div id="directions" class="instructionsPopup" >
 </div>
-<script  type="text/javascript" src="http://srvpub.com/adServe/banners?tid=39530_58456_0&type=shadowbox&size=300x250"></script>
 </body>
 </html>

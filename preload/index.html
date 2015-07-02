@@ -38,7 +38,12 @@ var giveBuffer = 10;
 
 $(document).ready(function()
 {
-	$("img").load(function(event) {
+
+	var platform = window.navigator.platform;
+	if(platform == 'iPad' || platform == 'iPhone' || platform == 'iPod' || platform == 'Linux armv7l')
+		window.open('error.html','_self');
+
+		$("img").load(function(event) {
 		imageCounter++;
 		
 		//Can fix loading bomb width this way.	

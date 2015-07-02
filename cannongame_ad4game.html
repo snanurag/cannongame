@@ -215,12 +215,14 @@
 					balls[i].ApplyImpulse(impulse, balls[i].GetWorldCenter());
 
 					//Play sound
-					stopBackgroundSound();
-					if(i == 0)
-						playCannon1Sound();
-					else
-						playCannon2Sound();
-					
+					if(sound == 'on')
+					{
+						stopBackgroundSound();
+						if(i == 0)
+							playCannon1Sound();
+						else
+							playCannon2Sound();
+					}
 				}
 			
 				//Update the final totalBodies count.
@@ -398,6 +400,8 @@
 </div>
 <div id="directions" class="instructionsPopup" >
 </div>
-<script  type="text/javascript" src="http://srvpub.com/adServe/banners?tid=39530_58456_0&type=shadowbox&size=300x250"></script>
-</body>
+
+<!-- Ad4Game Notification Text Ads -->
+<script type="text/javascript" src="//ads.ad4game.com/www/delivery/widgets/notification/index.php?zoneid=27265&align=tc"></script>
+<!-- End Ad4Game Notification Text Ads --></body>
 </html>
