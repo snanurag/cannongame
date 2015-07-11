@@ -5,11 +5,11 @@
 	'5.455096460842246E7.json', '9.878414830850183E8.json', '9.876811297099341E7.json',	'6.149199003819513E8.json'
 	];
 	
-	var bckGrounds = ['img/bck_shield_torches.jpg', 'img/bck_shield_torches.jpg', 'img/bck_shield_torches.jpg', 'img/bck_shield_torches.jpg', 'img/bck_shield_torches.jpg', 'img/bck_shield_torches.jpg', 'img/bck_shield_torches.jpg', 'img/bck_shield_torches.jpg', 
+	var bckGrounds = ['img/bck_sheilds.png', 'img/bck_sheilds.png', 'img/bck_sheilds.png', 'img/bck_sheild_flag.png', 'img/bck_sheild_flag.png', 'img/bck_flag_torch.png', 'img/bck_sheilds.png', 'img/bck_sheild_flag.png', 
 	
-	'img/bck_shield_torches.jpg', 'img/bck_shield_torches.jpg', 'img/bck_flag_torch.jpg', 'img/bck_flag_torch.jpg', 'img/bck_flag_torch.jpg', 'img/bck_flag_torch.jpg', 'img/bck_flag_torch.jpg', 'img/bck_flag_torch.jpg', 
+	'img/bck_sheild_flag.png', 'img/bck_flag_torch.png', 'img/bck_sheild_flag.png', 'img/bck_sheild_flag.png', 'img/bck_sheild_flag.png', 'img/bck_sheild_flag.png', 'img/bck_flag_torch.png', 'img/bck_flag_torch.png', 
 	
-	'img/bck_flag_torch.jpg', 'img/bck_flag_torch.jpg', 'img/bck_flag_torch.jpg', 'img/bck_flag_torch.jpg'
+	'img/bck_flag_torch.png', 'img/bck_flag_torch.png', 'img/bck_sheild_flag.png', 'img/bck_flag_torch.png'
 	];
 
 	//This function is responsible for the recoilation movement of the cannons.

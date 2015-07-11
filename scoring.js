@@ -63,10 +63,10 @@
 			
 			playWin();
 			
-			$.get('http://winged-memory-791.appspot.com/storescore?email='+$.cookie('cannongameemail')+'&'+currentLevel+'='+stars);
+			$.get('http://smiling-castle-92307.appspot.com/storescore?email='+$.cookie('cannongameemail')+'&'+currentLevel+'='+stars);
 			
 			numOfAttempts = 0;
-			
+		
 		}
 		else
 		{
@@ -99,6 +99,7 @@
 			{
 				for(var i =0; i<arrFrames.length; i++)
 				{
+					//array of frames is used because inclusion of ads generates additional frames than Main game frame.
 					if(typeof arrFrames[i].id != undefined && arrFrames[i].id == 'maingameframe')
 					{
 						if(getStage(nextLevel)%4 == 0)
@@ -110,7 +111,13 @@
 			}
 			else
 			{
-				//TODO show final Page.
+				for(var i =0; i<arrFrames.length; i++)
+				{
+					if(typeof arrFrames[i].id != undefined && arrFrames[i].id == 'maingameframe')
+					{
+						arrFrames[i].setAttribute("src", '../enter/credit_page.html');
+					}
+				}	
 			}
 		}
 		else
@@ -214,7 +221,6 @@
 				div.innerHTML += "<img src='img/golden_star.png'/> ";
 			}
 			setTimeout(changeInnerHTML, 3500, div, '<p> Next Stage !! </p>');
-
 		}
 	}
 	
