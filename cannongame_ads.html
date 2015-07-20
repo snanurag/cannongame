@@ -108,12 +108,12 @@
 			bodyDef.type = b2Body.b2_staticBody;
 
             // create ground
-            bxFixDef.shape.SetAsBox(10, 1);
+            bxFixDef.shape.SetAsBox(100, 1);
             bodyDef.position.Set(stage.stageWidth/(SCALE*2), stage.stageHeight/SCALE + 1);
             world.CreateBody(bodyDef).CreateFixture(bxFixDef);
 
 			//create roof
-            bxFixDef.shape.SetAsBox(10, 1);
+            bxFixDef.shape.SetAsBox(100, 1);
             bodyDef.position.Set(stage.stageWidth/(SCALE*2), -1);
             world.CreateBody(bodyDef).CreateFixture(bxFixDef);
 
