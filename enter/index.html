@@ -76,39 +76,30 @@ function attachSignin(element) {
 	else
 	{
 		auth2.attachClickHandler(element, {},function(googleUser) 
-			{
-				signinCallback(googleUser);
-			}, function(error)
-			{
-				consol.log(JSON.stringify(error, undefined, 2));
-			});
+		{
+			signinCallback(googleUser);
+		}, function(error)
+		{
+			consol.log(JSON.stringify(error, undefined, 2));
+		});
 	}
 }
 
 function signinCallback(googleUser) {
 
+	//Set email address in cookies
 	setEmailCookie(googleUser);
 	
-	displayStages(googleUser.getBasicProfile().getEmail());
+	//store cleared stages in db
+	storeStagesInDB(displayStages);
+	
+	//Display cleared stages as well
+//	displayStages();
 }
 
 function setEmailCookie(googleUser)
 {
 	$.cookie('cannongameemail', googleUser.getBasicProfile().getEmail(), { path:'/'});
-}
-
-function displayStages(email)
-{
-	$.get('http://winged-memory-791.appspot.com//retrievescore?email='+email, function(data) 
-	{
-		$.cookie("clearedstages", JSON.stringify(data));
-		var ifrm = document.getElementById('firstStageSet');
-		ifrm.src = 'stage_set_1.html';
-
-		var popup = document.getElementById('gsignin');
-		popup.parentNode.removeChild(popup);
-
-    });
 }
 
 </script>
@@ -125,7 +116,7 @@ function displayStages(email)
 			<!-- Each child div in #showcase represents a slide -->
 			<div class="showcase-slide" >
 				<!-- Put the slide content in a div with the class .showcase-content. -->
-				<iframe id="firstStageSet" src="stage_set_1_before_login.html" width="600px" height="300px" frameborder="0"></iframe>
+				<iframe id="firstStageSet" src="stage_set_1.html" width="600px" height="300px" frameborder="0"></iframe>
 			</div>
 			<!-- Each child div in #showcase represents a slide -->
 			<div class="showcase-slide">
@@ -153,6 +144,5 @@ function displayStages(email)
 		</div>
 		<script>startApp();</script>
 </body>
-
 
 </html>

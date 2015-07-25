@@ -1,16 +1,13 @@
 {
   "manifest_version": 2,
   "name": "Cannon Balls",
-  "version": "1.0.0.0",
+  "version": "1.0.0.1",
   "description": "Cannon Balls",
   "icons": {"48":"logo2.png","128":"logo.png"},
   "app": {
-    "urls": [
-      "http://cannonballs.in/"
-    ],
-    "launch": {
-      "web_url": "http://cannonballs.in/"
+	"background": {
+		"scripts": ["background.js"]
     }
-   },
+  },
   "homepage_url": "http://cannonballs.in"
 }

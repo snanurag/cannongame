@@ -63,7 +63,10 @@
 			
 			playWin();
 			
-			$.get('http://winged-memory-791.appspot.com/storescore?email='+$.cookie('cannongameemail')+'&'+currentLevel+'='+stars);
+			if($.cookie('cannongameemail') != undefined && $.cookie('cannongameemail') != null)
+				$.get('http://winged-memory-791.appspot.com/storescore?email='+$.cookie('cannongameemail')+'&'+currentLevel+'='+stars);
+			else
+				storeClearedStagesInCookie(currentLevel, stars);
 			
 			numOfAttempts = 0;
 		

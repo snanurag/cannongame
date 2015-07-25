@@ -330,3 +330,57 @@
 			b.previousColloider = a.name;
 		}
 	}
+	
+	function storeClearedStagesInCookie(stage, stars)
+	{
+		var clearedstages = $.cookie("clearedstages");
+		
+		if(typeof clearedstages == undefined || clearedstages == null)
+		{
+			clearedstages = {};
+		}
+		else 
+		{
+			clearedstages = JSON.parse(clearedstages);
+		}
+
+		clearedstages[stage] = stars;
+		$.cookie("clearedstages", JSON.stringify(clearedstages));
+		
+	}
+
+	function displayStages()
+	{
+		$.get('http://winged-memory-791.appspot.com//retrievescore?email='+$.cookie('cannongameemail'), function(data) 
+		{
+			$.cookie("clearedstages", JSON.stringify(data));
+			var ifrm = document.getElementById('firstStageSet');
+			ifrm.src = 'stage_set_1.html';
+
+			var popup = document.getElementById('gsignin');
+			popup.parentNode.removeChild(popup);
+
+		});
+	}
+	
+	function storeStagesInDB(callbackFn)
+	{
+		var clearedstages = $.cookie("clearedstages");
+		
+		if(typeof clearedstages != undefined && clearedstages != null)
+		{
+			clearedstages = JSON.parse(clearedstages);
+			
+			var queryParams = '';
+			
+			$.each(clearedstages, function(i, obj) {
+				queryParams += '&'+i+'='+obj; 
+			});
+			$.get('http://winged-memory-791.appspot.com/storescore?email='+$.cookie('cannongameemail')+queryParams, callbackFn);
+		}
+		else
+		{
+			callbackFn();
+		}
+		
+	}
