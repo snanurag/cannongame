@@ -6,11 +6,11 @@
   "icons": {"128":"logo.png"},
   "app": {
     "urls": [
-      "http://winged-memory-791.appspot.com/cg/preload/index.html"
+      "http://cannonballs.in/cg/preload/"
     ],
     "launch": {
-      "web_url": "http://winged-memory-791.appspot.com/cg/preload/index.html"
+      "web_url": "http://cannonballs.in/cg/preload/"
     }
    },
-  "homepage_url": "http://winged-memory-791.appspot.com/cg/preload/index.html"
+  "homepage_url": "http://cannonballs.in/cg/preload/"
 }
