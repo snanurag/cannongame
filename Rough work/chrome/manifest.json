@@ -1,13 +1,16 @@
 {
   "manifest_version": 2,
   "name": "Cannon Balls",
-  "version": "1.0.0.1",
+  "version": "1.0.0.2",
   "description": "Cannon Balls",
-  "icons": {"48":"logo2.png","128":"logo.png"},
+  "icons": {"128":"logo.png"},
   "app": {
-	"background": {
-		"scripts": ["background.js"]
+    "urls": [
+      "http://winged-memory-791.appspot.com/cg/preload/index.html"
+    ],
+    "launch": {
+      "web_url": "http://winged-memory-791.appspot.com/cg/preload/index.html"
     }
-  },
-  "homepage_url": "http://cannonballs.in"
+   },
+  "homepage_url": "http://winged-memory-791.appspot.com/cg/preload/index.html"
 }

@@ -87,28 +87,19 @@ function attachSignin(element) {
 
 function signinCallback(googleUser) {
 
+	//Set email address in cookies
 	setEmailCookie(googleUser);
 	
-	displayStages(googleUser.getBasicProfile().getEmail());
+	//store cleared stages in db
+	storeStagesInDB(displayStages);
+	
+	//Display cleared stages as well
+//	displayStages();
 }
 
 function setEmailCookie(googleUser)
 {
 	$.cookie('cannongameemail', googleUser.getBasicProfile().getEmail(), { path:'/'});
-}
-
-function displayStages(email)
-{
-	$.get('http://smiling-castle-92307.appspot.com//retrievescore?email='+email, function(data) 
-	{
-		$.cookie("clearedstages", JSON.stringify(data));
-		var ifrm = document.getElementById('firstStageSet');
-		ifrm.src = 'stage_set_1.html';
-
-		var popup = document.getElementById('gsignin');
-		popup.parentNode.removeChild(popup);
-
-    });
 }
 
 </script>
@@ -147,12 +138,11 @@ function displayStages(email)
 		</div>		
 
 	    <div id="gsignin" class="googlesignin">
-			<div id="innergooglesignin" pointer-events="fill">
+			<div id="innergooglesignin">
 				<span class="icon"></span>
 			</div>	
 		</div>
 		<script>startApp();</script>
 </body>
-
 
 </html>

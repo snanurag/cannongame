@@ -64,7 +64,7 @@
 			playWin();
 			
 			if($.cookie('cannongameemail') != undefined && $.cookie('cannongameemail') != null)
-				$.get('http://smiling-castle-92307.appspot.com/storescore?email='+$.cookie('cannongameemail')+'&'+currentLevel+'='+stars);
+				$.get('http://winged-memory-791.appspot.com/storescore?email='+$.cookie('cannongameemail')+'&'+currentLevel+'='+stars);
 			else
 				storeClearedStagesInCookie(currentLevel, stars);
 			
